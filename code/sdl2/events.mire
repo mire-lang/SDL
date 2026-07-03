@@ -1,0 +1,56 @@
+module events
+
+extern lib "SDL2"
+
+extern fn SDL_PollEvent: (event_ptr :i64) :i64 lib "SDL2"
+extern fn SDL_WaitEvent: (event_ptr :i64) :i64 lib "SDL2"
+extern fn SDL_WaitEventTimeout: (event_ptr :i64, timeout_ms :i64) :i64 lib "SDL2"
+extern fn SDL_PushEvent: (event_ptr :i64) :i64 lib "SDL2"
+extern fn SDL_FlushEvent: (event_type :i64) lib "SDL2"
+extern fn SDL_FlushEvents: (min_type :i64, max_type :i64) lib "SDL2"
+
+pub fn event_type_quit: () :i64 { return 0x100 }
+pub fn event_type_window_event: () :i64 { return 0x200 }
+pub fn event_type_key_down: () :i64 { return 0x300 }
+pub fn event_type_key_up: () :i64 { return 0x301 }
+pub fn event_type_text_input: () :i64 { return 0x303 }
+pub fn event_type_mouse_motion: () :i64 { return 0x400 }
+pub fn event_type_mouse_button_down: () :i64 { return 0x401 }
+pub fn event_type_mouse_button_up: () :i64 { return 0x402 }
+pub fn event_type_mouse_wheel: () :i64 { return 0x403 }
+pub fn event_type_clipboard_update: () :i64 { return 0x600 }
+pub fn event_type_drop_file: () :i64 { return 0x700 }
+pub fn event_type_drop_text: () :i64 { return 0x701 }
+pub fn event_type_audio_device_added: () :i64 { return 0x800 }
+pub fn event_type_audio_device_removed: () :i64 { return 0x801 }
+pub fn event_type_user_event: () :i64 { return 0x8000 }
+
+pub fn window_event_shown: () :i64 { return 1 }
+pub fn window_event_hidden: () :i64 { return 2 }
+pub fn window_event_exposed: () :i64 { return 3 }
+pub fn window_event_moved: () :i64 { return 4 }
+pub fn window_event_resized: () :i64 { return 5 }
+pub fn window_event_minimized: () :i64 { return 6 }
+pub fn window_event_maximized: () :i64 { return 7 }
+pub fn window_event_restored: () :i64 { return 8 }
+pub fn window_event_mouse_enter: () :i64 { return 9 }
+pub fn window_event_mouse_leave: () :i64 { return 10 }
+pub fn window_event_focus_gained: () :i64 { return 11 }
+pub fn window_event_focus_lost: () :i64 { return 12 }
+pub fn window_event_close: () :i64 { return 13 }
+pub fn window_event_take_focus: () :i64 { return 14 }
+pub fn window_event_hit_test: () :i64 { return 15 }
+pub fn window_event_iccp_changed: () :i64 { return 16 }
+pub fn window_event_display_changed: () :i64 { return 17 }
+
+pub fn poll_event: (buf :i64) :i64 { return SDL_PollEvent(buf) }
+
+pub fn wait_event: (buf :i64) :i64 { return SDL_WaitEvent(buf) }
+
+pub fn wait_event_timeout: (buf :i64, ms :i64) :i64 { return SDL_WaitEventTimeout(buf, ms) }
+
+pub fn push_event: (buf :i64) :i64 { return SDL_PushEvent(buf) }
+
+pub fn flush_event: (t :i64) { SDL_FlushEvent(t) }
+
+pub fn flush_events: (min :i64, max :i64) { SDL_FlushEvents(min, max) }

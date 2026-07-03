@@ -1,0 +1,109 @@
+module video
+
+extern lib "SDL3"
+
+extern fn SDL_CreateWindow: (title :str, w :i64, h :i64, flags :i64) :i64 lib "SDL3"
+extern fn SDL_DestroyWindow: (window :i64) lib "SDL3"
+extern fn SDL_SetWindowTitle: (window :i64, title :str) :bool lib "SDL3"
+extern fn SDL_GetWindowTitle: (window :i64) :str lib "SDL3"
+extern fn SDL_SetWindowSize: (window :i64, w :i64, h :i64) :bool lib "SDL3"
+extern fn SDL_GetWindowSize: (window :i64, w :i64, h :i64) :bool lib "SDL3"
+extern fn SDL_SetWindowPosition: (window :i64, x :i64, y :i64) :bool lib "SDL3"
+extern fn SDL_GetWindowPosition: (window :i64, x :i64, y :i64) :bool lib "SDL3"
+extern fn SDL_ShowWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_HideWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_MaximizeWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_MinimizeWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_RestoreWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_RaiseWindow: (window :i64) :bool lib "SDL3"
+extern fn SDL_SetWindowFullscreen: (window :i64, fullscreen :bool) :bool lib "SDL3"
+extern fn SDL_GetWindowFlags: (window :i64) :i64 lib "SDL3"
+extern fn SDL_GetWindowID: (window :i64) :i64 lib "SDL3"
+extern fn SDL_GetWindowFromID: (id :i64) :i64 lib "SDL3"
+extern fn SDL_GetWindowPixelDensity: (window :i64) :f64 lib "SDL3"
+extern fn SDL_GetWindowDisplayScale: (window :i64) :f64 lib "SDL3"
+
+extern fn SDL_GetDisplays: (count :i64) :i64 lib "SDL3"
+extern fn SDL_GetPrimaryDisplay: () :i64 lib "SDL3"
+extern fn SDL_GetDisplayName: (display_id :i64) :str lib "SDL3"
+extern fn SDL_GetDisplayBounds: (display_id :i64, rect_ptr :i64) :bool lib "SDL3"
+extern fn SDL_GetDisplayUsableBounds: (display_id :i64, rect_ptr :i64) :bool lib "SDL3"
+extern fn SDL_GetDesktopDisplayMode: (display_id :i64) :i64 lib "SDL3"
+extern fn SDL_GetCurrentDisplayMode: (display_id :i64) :i64 lib "SDL3"
+extern fn SDL_GetDisplayForWindow: (window :i64) :i64 lib "SDL3"
+
+pub fn window_flag_fullscreen: () :i64 { return 0x0000000000000001 }
+pub fn window_flag_opengl: () :i64 { return 0x0000000000000002 }
+pub fn window_flag_hidden: () :i64 { return 0x0000000000000008 }
+pub fn window_flag_borderless: () :i64 { return 0x0000000000000010 }
+pub fn window_flag_resizable: () :i64 { return 0x0000000000000020 }
+pub fn window_flag_minimized: () :i64 { return 0x0000000000000040 }
+pub fn window_flag_maximized: () :i64 { return 0x0000000000000080 }
+pub fn window_flag_mouse_grabbed: () :i64 { return 0x0000000000000100 }
+pub fn window_flag_input_focus: () :i64 { return 0x0000000000000200 }
+pub fn window_flag_mouse_focus: () :i64 { return 0x0000000000000400 }
+pub fn window_flag_always_on_top: () :i64 { return 0x0000000000008000 }
+pub fn window_flag_utility: () :i64 { return 0x0000000000002000 }
+pub fn window_flag_tooltip: () :i64 { return 0x0000000000010000 }
+pub fn window_flag_popup_menu: () :i64 { return 0x0000000000020000 }
+pub fn window_flag_vulkan: () :i64 { return 0x0000000010000000 }
+pub fn window_flag_transparent: () :i64 { return 0x0000000100000000 }
+pub fn window_flag_high_pi_display: () :i64 { return 0x0000000200000000 }
+
+pub fn create_window: (title :str, w :i64, h :i64) :i64 {
+    return SDL_CreateWindow(title w h 0x00000000)
+}
+
+pub fn create_window_flags: (title :str, w :i64, h :i64, flags :i64) :i64 {
+    return SDL_CreateWindow(title w h flags)
+}
+
+pub fn destroy_window: (win :i64) { SDL_DestroyWindow(win) }
+
+pub fn set_window_title: (win :i64, title :str) :bool { return SDL_SetWindowTitle(win title) }
+
+pub fn get_window_title: (win :i64) :str { return SDL_GetWindowTitle(win) }
+
+pub fn set_window_size: (win :i64, w :i64, h :i64) :bool { return SDL_SetWindowSize(win w h) }
+
+pub fn get_window_size: (win :i64, w :i64, h :i64) :bool { return SDL_GetWindowSize(win w h) }
+
+pub fn set_window_pos: (win :i64, x :i64, y :i64) :bool { return SDL_SetWindowPosition(win x y) }
+
+pub fn get_window_pos: (win :i64, x :i64, y :i64) :bool { return SDL_GetWindowPosition(win x y) }
+
+pub fn show_window: (win :i64) :bool { return SDL_ShowWindow(win) }
+
+pub fn hide_window: (win :i64) :bool { return SDL_HideWindow(win) }
+
+pub fn maximize_window: (win :i64) :bool { return SDL_MaximizeWindow(win) }
+
+pub fn minimize_window: (win :i64) :bool { return SDL_MinimizeWindow(win) }
+
+pub fn restore_window: (win :i64) :bool { return SDL_RestoreWindow(win) }
+
+pub fn raise_window: (win :i64) :bool { return SDL_RaiseWindow(win) }
+
+pub fn set_fullscreen: (win :i64, fs :bool) :bool { return SDL_SetWindowFullscreen(win fs) }
+
+pub fn get_window_flags: (win :i64) :i64 { return SDL_GetWindowFlags(win) }
+
+pub fn get_window_id: (win :i64) :i64 { return SDL_GetWindowID(win) }
+
+pub fn get_window_from_id: (id :i64) :i64 { return SDL_GetWindowFromID(id) }
+
+pub fn get_pixel_density: (win :i64) :f64 { return SDL_GetWindowPixelDensity(win) }
+
+pub fn get_display_scale: (win :i64) :f64 { return SDL_GetWindowDisplayScale(win) }
+
+pub fn get_display_count: () :i64 { return SDL_GetDisplays(0) }
+
+pub fn get_primary_display: () :i64 { return SDL_GetPrimaryDisplay() }
+
+pub fn get_display_name: (id :i64) :str { return SDL_GetDisplayName(id) }
+
+pub fn get_display_bounds: (id :i64, rect_ptr :i64) :bool { return SDL_GetDisplayBounds(id rect_ptr) }
+
+pub fn get_display_usable_bounds: (id :i64, rect_ptr :i64) :bool { return SDL_GetDisplayUsableBounds(id rect_ptr) }
+
+pub fn get_display_for_window: (win :i64) :i64 { return SDL_GetDisplayForWindow(win) }

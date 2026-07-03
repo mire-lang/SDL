@@ -1,0 +1,46 @@
+module audio
+
+extern lib "SDL2"
+
+extern fn SDL_GetNumAudioDevices: (capture :i64) :i64 lib "SDL2"
+extern fn SDL_GetAudioDeviceName: (index :i64, capture :i64) :str lib "SDL2"
+extern fn SDL_OpenAudioDevice: (device :str, capture :i64, desired_ptr :i64, obtained_ptr :i64, allowed_changes :i64) :i64 lib "SDL2"
+extern fn SDL_CloseAudioDevice: (devid :i64) lib "SDL2"
+extern fn SDL_PauseAudioDevice: (devid :i64, pause_on :i64) lib "SDL2"
+extern fn SDL_QueueAudio: (devid :i64, data :i64, len :i64) :i64 lib "SDL2"
+extern fn SDL_GetQueuedAudioSize: (devid :i64) :i64 lib "SDL2"
+extern fn SDL_ClearQueuedAudio: (devid :i64) lib "SDL2"
+extern fn SDL_MixAudioFormat: (dst :i64, src :i64, format :i64, len :i64, volume :i64) lib "SDL2"
+extern fn SDL_GetAudioDriver: (index :i64) :str lib "SDL2"
+extern fn SDL_GetCurrentAudioDriver: () :str lib "SDL2"
+extern fn SDL_GetAudioDeviceSpec: (index :i64, capture :i64, spec_ptr :i64) :i64 lib "SDL2"
+
+pub fn get_num_audio_devices: (capture :i64) :i64 { return SDL_GetNumAudioDevices(capture) }
+
+pub fn get_audio_device_name: (idx :i64, capture :i64) :str { return SDL_GetAudioDeviceName(idx capture) }
+
+pub fn open_device: (device :str, capture :i64, desired :i64, obtained :i64, allowed :i64) :i64 {
+    return SDL_OpenAudioDevice(device capture desired obtained allowed)
+}
+
+pub fn close_device: (devid :i64) { SDL_CloseAudioDevice(devid) }
+
+pub fn pause_device: (devid :i64, pause :i64) { SDL_PauseAudioDevice(devid pause) }
+
+pub fn queue_audio: (devid :i64, data :i64, len :i64) :i64 { return SDL_QueueAudio(devid data len) }
+
+pub fn get_queued_audio_size: (devid :i64) :i64 { return SDL_GetQueuedAudioSize(devid) }
+
+pub fn clear_queued_audio: (devid :i64) { SDL_ClearQueuedAudio(devid) }
+
+pub fn mix_audio_format: (dst :i64, src :i64, format :i64, len :i64, volume :i64) {
+    SDL_MixAudioFormat(dst src format len volume)
+}
+
+pub fn get_audio_driver: (idx :i64) :str { return SDL_GetAudioDriver(idx) }
+
+pub fn get_current_audio_driver: () :str { return SDL_GetCurrentAudioDriver() }
+
+pub fn get_audio_device_spec: (idx :i64, capture :i64, spec_ptr :i64) :i64 {
+    return SDL_GetAudioDeviceSpec(idx capture spec_ptr)
+}

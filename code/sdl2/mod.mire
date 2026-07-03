@@ -1,0 +1,28 @@
+module sdl2
+
+extern lib "SDL2"
+
+extern fn SDL_Init: (flags :i64) :i64 lib "SDL2"
+extern fn SDL_Quit: () lib "SDL2"
+extern fn SDL_GetError: () :str lib "SDL2"
+extern fn SDL_Delay: (ms :i64) lib "SDL2"
+extern fn SDL_GetTicks: () :i64 lib "SDL2"
+
+extern fn SDL_SetHint: (name :str, value :str) :bool lib "SDL2"
+extern fn SDL_GetHint: (name :str) :str lib "SDL2"
+
+pub fn init: (flags :i64) :i64 { return SDL_Init(flags) }
+
+pub fn init_video: () :i64 { return SDL_Init(0x00000020) }
+
+pub fn quit: () { SDL_Quit() }
+
+pub fn get_error: () :str { return SDL_GetError() }
+
+pub fn delay: (ms :i64) { SDL_Delay(ms) }
+
+pub fn get_ticks: () :i64 { return SDL_GetTicks() }
+
+pub fn set_hint: (name :str, value :str) :bool { return SDL_SetHint(name, value) }
+
+pub fn get_hint: (name :str) :str { return SDL_GetHint(name) }

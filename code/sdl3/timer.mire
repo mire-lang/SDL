@@ -1,0 +1,25 @@
+module timer
+
+extern lib "SDL3"
+
+extern fn SDL_GetTicks: () :i64 lib "SDL3"
+extern fn SDL_GetTicksNS: () :i64 lib "SDL3"
+extern fn SDL_Delay: (ms :i64) lib "SDL3"
+extern fn SDL_DelayNS: (ns :i64) :bool lib "SDL3"
+extern fn SDL_DelayPrecise: (ns :i64) lib "SDL3"
+extern fn SDL_GetPerformanceCounter: () :i64 lib "SDL3"
+extern fn SDL_GetPerformanceFrequency: () :i64 lib "SDL3"
+
+pub fn get_ticks: () :i64 { return SDL_GetTicks() }
+
+pub fn get_ticks_ns: () :i64 { return SDL_GetTicksNS() }
+
+pub fn delay: (ms :i64) { SDL_Delay(ms) }
+
+pub fn delay_ns: (ns :i64) :bool { return SDL_DelayNS(ns) }
+
+pub fn delay_precise: (ns :i64) { SDL_DelayPrecise(ns) }
+
+pub fn performance_counter: () :i64 { return SDL_GetPerformanceCounter() }
+
+pub fn performance_frequency: () :i64 { return SDL_GetPerformanceFrequency() }

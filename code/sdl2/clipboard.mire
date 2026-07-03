@@ -1,0 +1,19 @@
+module clipboard
+
+extern lib "SDL2"
+
+extern fn SDL_SetClipboardText: (text :str) :i64 lib "SDL2"
+extern fn SDL_GetClipboardText: () :str lib "SDL2"
+extern fn SDL_HasClipboardText: () :i64 lib "SDL2"
+
+pub fn set_clipboard_text: (text :str) :i64 {
+    return SDL_SetClipboardText(text)
+}
+
+pub fn get_clipboard_text: () :str {
+    return SDL_GetClipboardText()
+}
+
+pub fn has_clipboard_text: () :i64 {
+    return SDL_HasClipboardText()
+}

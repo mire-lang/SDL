@@ -1,0 +1,12 @@
+[project]
+name = "sdl2"
+version = "0.1.0"
+entry = "mod.mire"
+
+[exports]
+events = "events.mire"
+render = "render.mire"
+video = "video.mire"
+audio = "audio.mire"
+clipboard = "clipboard.mire"
+timer = "timer.mire"
