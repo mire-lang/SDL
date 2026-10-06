@@ -31,7 +31,7 @@ registry = "mor"
 
 [dependencies]
 mire = { path = "~/.owl/libs/mire" }
-kioto = { path = "~/.owl/libs/kioto" }
+kioto = { path = "~/.owl/libs/kioto", version = "3.0.0" }
 sdl = { path = "." }
 
 [exports]
