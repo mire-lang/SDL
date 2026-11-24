@@ -1,0 +1,231 @@
+load sdl::sdl3::gamepad
+load! /tests/_support/harness
+
+@[test]
+pub fn gamepad_axis_left_x_success: () :bool {
+    return use! harness::check("gamepad::axis_left_x", gamepad::axis_left_x() == 0)
+}
+
+@[test]
+pub fn gamepad_axis_left_y_success: () :bool {
+    return use! harness::check("gamepad::axis_left_y", gamepad::axis_left_y() == 1)
+}
+
+@[test]
+pub fn gamepad_axis_right_x_success: () :bool {
+    return use! harness::check("gamepad::axis_right_x", gamepad::axis_right_x() == 2)
+}
+
+@[test]
+pub fn gamepad_axis_right_y_success: () :bool {
+    return use! harness::check("gamepad::axis_right_y", gamepad::axis_right_y() == 3)
+}
+
+@[test]
+pub fn gamepad_axis_left_trigger_success: () :bool {
+    return use! harness::check("gamepad::axis_left_trigger", gamepad::axis_left_trigger() == 4)
+}
+
+@[test]
+pub fn gamepad_axis_right_trigger_success: () :bool {
+    return use! harness::check("gamepad::axis_right_trigger", gamepad::axis_right_trigger() == 5)
+}
+
+@[test]
+pub fn gamepad_button_a_success: () :bool {
+    return use! harness::check("gamepad::button_a", gamepad::button_a() == 0)
+}
+
+@[test]
+pub fn gamepad_button_b_success: () :bool {
+    return use! harness::check("gamepad::button_b", gamepad::button_b() == 1)
+}
+
+@[test]
+pub fn gamepad_button_x_success: () :bool {
+    return use! harness::check("gamepad::button_x", gamepad::button_x() == 2)
+}
+
+@[test]
+pub fn gamepad_button_y_success: () :bool {
+    return use! harness::check("gamepad::button_y", gamepad::button_y() == 3)
+}
+
+@[test]
+pub fn gamepad_button_back_success: () :bool {
+    return use! harness::check("gamepad::button_back", gamepad::button_back() == 4)
+}
+
+@[test]
+pub fn gamepad_button_guide_success: () :bool {
+    return use! harness::check("gamepad::button_guide", gamepad::button_guide() == 5)
+}
+
+@[test]
+pub fn gamepad_button_start_success: () :bool {
+    return use! harness::check("gamepad::button_start", gamepad::button_start() == 6)
+}
+
+@[test]
+pub fn gamepad_button_left_stick_success: () :bool {
+    return use! harness::check("gamepad::button_left_stick", gamepad::button_left_stick() == 7)
+}
+
+@[test]
+pub fn gamepad_button_right_stick_success: () :bool {
+    return use! harness::check("gamepad::button_right_stick", gamepad::button_right_stick() == 8)
+}
+
+@[test]
+pub fn gamepad_button_left_shoulder_success: () :bool {
+    return use! harness::check("gamepad::button_left_shoulder", gamepad::button_left_shoulder() == 9)
+}
+
+@[test]
+pub fn gamepad_button_right_shoulder_success: () :bool {
+    return use! harness::check("gamepad::button_right_shoulder", gamepad::button_right_shoulder() == 10)
+}
+
+@[test]
+pub fn gamepad_button_dpad_up_success: () :bool {
+    return use! harness::check("gamepad::button_dpad_up", gamepad::button_dpad_up() == 11)
+}
+
+@[test]
+pub fn gamepad_button_dpad_down_success: () :bool {
+    return use! harness::check("gamepad::button_dpad_down", gamepad::button_dpad_down() == 12)
+}
+
+@[test]
+pub fn gamepad_button_dpad_left_success: () :bool {
+    return use! harness::check("gamepad::button_dpad_left", gamepad::button_dpad_left() == 13)
+}
+
+@[test]
+pub fn gamepad_button_dpad_right_success: () :bool {
+    return use! harness::check("gamepad::button_dpad_right", gamepad::button_dpad_right() == 14)
+}
+
+@[test]
+pub fn gamepad_button_misc1_success: () :bool {
+    return use! harness::check("gamepad::button_misc1", gamepad::button_misc1() == 15)
+}
+
+@[test]
+pub fn gamepad_button_paddle1_success: () :bool {
+    return use! harness::check("gamepad::button_paddle1", gamepad::button_paddle1() == 16)
+}
+
+@[test]
+pub fn gamepad_button_paddle2_success: () :bool {
+    return use! harness::check("gamepad::button_paddle2", gamepad::button_paddle2() == 17)
+}
+
+@[test]
+pub fn gamepad_button_paddle3_success: () :bool {
+    return use! harness::check("gamepad::button_paddle3", gamepad::button_paddle3() == 18)
+}
+
+@[test]
+pub fn gamepad_button_paddle4_success: () :bool {
+    return use! harness::check("gamepad::button_paddle4", gamepad::button_paddle4() == 19)
+}
+
+@[test]
+pub fn gamepad_button_touchpad_success: () :bool {
+    return use! harness::check("gamepad::button_touchpad", gamepad::button_touchpad() == 20)
+}
+
+@[test]
+pub fn gamepad_constants_limit: () :bool {
+    set ok = true :bool mut
+    if gamepad::axis_left_x() < 0 { set ok = false }
+    if gamepad::axis_left_x() != gamepad::axis_left_x() { set ok = false }
+    if gamepad::axis_left_y() < 0 { set ok = false }
+    if gamepad::axis_left_y() != gamepad::axis_left_y() { set ok = false }
+    if gamepad::axis_right_x() < 0 { set ok = false }
+    if gamepad::axis_right_x() != gamepad::axis_right_x() { set ok = false }
+    if gamepad::axis_right_y() < 0 { set ok = false }
+    if gamepad::axis_right_y() != gamepad::axis_right_y() { set ok = false }
+    if gamepad::axis_left_trigger() < 0 { set ok = false }
+    if gamepad::axis_left_trigger() != gamepad::axis_left_trigger() { set ok = false }
+    if gamepad::axis_right_trigger() < 0 { set ok = false }
+    if gamepad::axis_right_trigger() != gamepad::axis_right_trigger() { set ok = false }
+    if gamepad::button_a() < 0 { set ok = false }
+    if gamepad::button_a() != gamepad::button_a() { set ok = false }
+    if gamepad::button_b() < 0 { set ok = false }
+    if gamepad::button_b() != gamepad::button_b() { set ok = false }
+    if gamepad::button_x() < 0 { set ok = false }
+    if gamepad::button_x() != gamepad::button_x() { set ok = false }
+    if gamepad::button_y() < 0 { set ok = false }
+    if gamepad::button_y() != gamepad::button_y() { set ok = false }
+    if gamepad::button_back() < 0 { set ok = false }
+    if gamepad::button_back() != gamepad::button_back() { set ok = false }
+    if gamepad::button_guide() < 0 { set ok = false }
+    if gamepad::button_guide() != gamepad::button_guide() { set ok = false }
+    if gamepad::button_start() < 0 { set ok = false }
+    if gamepad::button_start() != gamepad::button_start() { set ok = false }
+    if gamepad::button_left_stick() < 0 { set ok = false }
+    if gamepad::button_left_stick() != gamepad::button_left_stick() { set ok = false }
+    if gamepad::button_right_stick() < 0 { set ok = false }
+    if gamepad::button_right_stick() != gamepad::button_right_stick() { set ok = false }
+    if gamepad::button_left_shoulder() < 0 { set ok = false }
+    if gamepad::button_left_shoulder() != gamepad::button_left_shoulder() { set ok = false }
+    if gamepad::button_right_shoulder() < 0 { set ok = false }
+    if gamepad::button_right_shoulder() != gamepad::button_right_shoulder() { set ok = false }
+    if gamepad::button_dpad_up() < 0 { set ok = false }
+    if gamepad::button_dpad_up() != gamepad::button_dpad_up() { set ok = false }
+    if gamepad::button_dpad_down() < 0 { set ok = false }
+    if gamepad::button_dpad_down() != gamepad::button_dpad_down() { set ok = false }
+    if gamepad::button_dpad_left() < 0 { set ok = false }
+    if gamepad::button_dpad_left() != gamepad::button_dpad_left() { set ok = false }
+    if gamepad::button_dpad_right() < 0 { set ok = false }
+    if gamepad::button_dpad_right() != gamepad::button_dpad_right() { set ok = false }
+    if gamepad::button_misc1() < 0 { set ok = false }
+    if gamepad::button_misc1() != gamepad::button_misc1() { set ok = false }
+    if gamepad::button_paddle1() < 0 { set ok = false }
+    if gamepad::button_paddle1() != gamepad::button_paddle1() { set ok = false }
+    if gamepad::button_paddle2() < 0 { set ok = false }
+    if gamepad::button_paddle2() != gamepad::button_paddle2() { set ok = false }
+    if gamepad::button_paddle3() < 0 { set ok = false }
+    if gamepad::button_paddle3() != gamepad::button_paddle3() { set ok = false }
+    if gamepad::button_paddle4() < 0 { set ok = false }
+    if gamepad::button_paddle4() != gamepad::button_paddle4() { set ok = false }
+    if gamepad::button_touchpad() < 0 { set ok = false }
+    if gamepad::button_touchpad() != gamepad::button_touchpad() { set ok = false }
+    return use! harness::check("gamepad::constants/limit", ok)
+}
+
+@[test]
+pub fn gamepad_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if gamepad::axis_left_x() != gamepad::axis_left_x() { set ok = false }
+    if gamepad::axis_left_y() != gamepad::axis_left_y() { set ok = false }
+    if gamepad::axis_right_x() != gamepad::axis_right_x() { set ok = false }
+    if gamepad::axis_right_y() != gamepad::axis_right_y() { set ok = false }
+    if gamepad::axis_left_trigger() != gamepad::axis_left_trigger() { set ok = false }
+    if gamepad::axis_right_trigger() != gamepad::axis_right_trigger() { set ok = false }
+    if gamepad::button_a() != gamepad::button_a() { set ok = false }
+    if gamepad::button_b() != gamepad::button_b() { set ok = false }
+    if gamepad::button_x() != gamepad::button_x() { set ok = false }
+    if gamepad::button_y() != gamepad::button_y() { set ok = false }
+    if gamepad::button_back() != gamepad::button_back() { set ok = false }
+    if gamepad::button_guide() != gamepad::button_guide() { set ok = false }
+    if gamepad::button_start() != gamepad::button_start() { set ok = false }
+    if gamepad::button_left_stick() != gamepad::button_left_stick() { set ok = false }
+    if gamepad::button_right_stick() != gamepad::button_right_stick() { set ok = false }
+    if gamepad::button_left_shoulder() != gamepad::button_left_shoulder() { set ok = false }
+    if gamepad::button_right_shoulder() != gamepad::button_right_shoulder() { set ok = false }
+    if gamepad::button_dpad_up() != gamepad::button_dpad_up() { set ok = false }
+    if gamepad::button_dpad_down() != gamepad::button_dpad_down() { set ok = false }
+    if gamepad::button_dpad_left() != gamepad::button_dpad_left() { set ok = false }
+    if gamepad::button_dpad_right() != gamepad::button_dpad_right() { set ok = false }
+    if gamepad::button_misc1() != gamepad::button_misc1() { set ok = false }
+    if gamepad::button_paddle1() != gamepad::button_paddle1() { set ok = false }
+    if gamepad::button_paddle2() != gamepad::button_paddle2() { set ok = false }
+    if gamepad::button_paddle3() != gamepad::button_paddle3() { set ok = false }
+    if gamepad::button_paddle4() != gamepad::button_paddle4() { set ok = false }
+    if gamepad::button_touchpad() != gamepad::button_touchpad() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_gamepad", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("gamepad::constants/anomaly", ok)
+}

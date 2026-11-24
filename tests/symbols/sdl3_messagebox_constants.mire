@@ -1,0 +1,71 @@
+load sdl::sdl3::messagebox
+load! /tests/_support/harness
+
+@[test]
+pub fn messagebox_flag_error_success: () :bool {
+    return use! harness::check("messagebox::flag_error", messagebox::flag_error() == 0x00000010)
+}
+
+@[test]
+pub fn messagebox_flag_warning_success: () :bool {
+    return use! harness::check("messagebox::flag_warning", messagebox::flag_warning() == 0x00000020)
+}
+
+@[test]
+pub fn messagebox_flag_information_success: () :bool {
+    return use! harness::check("messagebox::flag_information", messagebox::flag_information() == 0x00000040)
+}
+
+@[test]
+pub fn messagebox_flag_buttons_left_to_right_success: () :bool {
+    return use! harness::check("messagebox::flag_buttons_left_to_right", messagebox::flag_buttons_left_to_right() == 0x00000080)
+}
+
+@[test]
+pub fn messagebox_flag_buttons_right_to_left_success: () :bool {
+    return use! harness::check("messagebox::flag_buttons_right_to_left", messagebox::flag_buttons_right_to_left() == 0x00000100)
+}
+
+@[test]
+pub fn messagebox_flag_button_returnkey_default_success: () :bool {
+    return use! harness::check("messagebox::flag_button_returnkey_default", messagebox::flag_button_returnkey_default() == 0x00000200)
+}
+
+@[test]
+pub fn messagebox_flag_button_escapekey_default_success: () :bool {
+    return use! harness::check("messagebox::flag_button_escapekey_default", messagebox::flag_button_escapekey_default() == 0x00000400)
+}
+
+@[test]
+pub fn messagebox_constants_limit: () :bool {
+    set ok = true :bool mut
+    if messagebox::flag_error() < 0 { set ok = false }
+    if messagebox::flag_error() != messagebox::flag_error() { set ok = false }
+    if messagebox::flag_warning() < 0 { set ok = false }
+    if messagebox::flag_warning() != messagebox::flag_warning() { set ok = false }
+    if messagebox::flag_information() < 0 { set ok = false }
+    if messagebox::flag_information() != messagebox::flag_information() { set ok = false }
+    if messagebox::flag_buttons_left_to_right() < 0 { set ok = false }
+    if messagebox::flag_buttons_left_to_right() != messagebox::flag_buttons_left_to_right() { set ok = false }
+    if messagebox::flag_buttons_right_to_left() < 0 { set ok = false }
+    if messagebox::flag_buttons_right_to_left() != messagebox::flag_buttons_right_to_left() { set ok = false }
+    if messagebox::flag_button_returnkey_default() < 0 { set ok = false }
+    if messagebox::flag_button_returnkey_default() != messagebox::flag_button_returnkey_default() { set ok = false }
+    if messagebox::flag_button_escapekey_default() < 0 { set ok = false }
+    if messagebox::flag_button_escapekey_default() != messagebox::flag_button_escapekey_default() { set ok = false }
+    return use! harness::check("messagebox::constants/limit", ok)
+}
+
+@[test]
+pub fn messagebox_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if messagebox::flag_error() != messagebox::flag_error() { set ok = false }
+    if messagebox::flag_warning() != messagebox::flag_warning() { set ok = false }
+    if messagebox::flag_information() != messagebox::flag_information() { set ok = false }
+    if messagebox::flag_buttons_left_to_right() != messagebox::flag_buttons_left_to_right() { set ok = false }
+    if messagebox::flag_buttons_right_to_left() != messagebox::flag_buttons_right_to_left() { set ok = false }
+    if messagebox::flag_button_returnkey_default() != messagebox::flag_button_returnkey_default() { set ok = false }
+    if messagebox::flag_button_escapekey_default() != messagebox::flag_button_escapekey_default() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_messagebox", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("messagebox::constants/anomaly", ok)
+}

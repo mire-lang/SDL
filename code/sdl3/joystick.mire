@@ -1,4 +1,5 @@
 module joystick
+load sdl::sdl3::conv
 
 extern lib "SDL3"
 
@@ -38,31 +39,26 @@ extern fn SDL_DetachVirtualJoystick: (instance_id :i64) :bool lib "SDL3"
 extern fn SDL_LockJoysticks: () lib "SDL3"
 extern fn SDL_UnlockJoysticks: () lib "SDL3"
 
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_write_u32: (ptr :i64, val :i64) lib "c"
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
-extern fn rt_read_u64: (ptr :i64) :i64 lib "c"
 extern fn rt_read_ptr: (ptr :i64) :i64 lib "c"
 
 pub fn has_joystick: () :bool { return SDL_HasJoystick() }
 
 pub fn get_joysticks: () :i64 {
-    set count_ptr = rt_alloc_raw(4)
+    set count_ptr = conv::alloc_raw(4)
     if count_ptr == 0 { return 0 }
     set list = SDL_GetJoysticks(count_ptr)
-    set count = rt_read_u32(count_ptr)
-    rt_free_raw(count_ptr)
+    set count = conv::read_u32(count_ptr)
+    conv::free_raw(count_ptr)
     // returns pointer to array of i32 instance IDs; caller must free
     return list
 }
 
 pub fn get_count: () :i64 {
-    set count_ptr = rt_alloc_raw(4)
+    set count_ptr = conv::alloc_raw(4)
     if count_ptr == 0 { return 0 }
     SDL_GetJoysticks(count_ptr)
-    set count = rt_read_u32(count_ptr)
-    rt_free_raw(count_ptr)
+    set count = conv::read_u32(count_ptr)
+    conv::free_raw(count_ptr)
     return count
 }
 
@@ -89,11 +85,11 @@ pub fn get_type: (joystick :i64) :i64 { return SDL_GetJoystickType(joystick) }
 
 pub fn get_axis: (joystick :i64, axis :i64) :i64 { return SDL_GetJoystickAxis(joystick axis) }
 pub fn get_axis_initial_state: (joystick :i64, axis :i64) :i64 {
-    set state_ptr = rt_alloc_raw(4)
+    set state_ptr = conv::alloc_raw(4)
     if state_ptr == 0 { return 0 }
     SDL_GetJoystickAxisInitialState(joystick axis state_ptr)
-    set val = rt_read_u32(state_ptr)
-    rt_free_raw(state_ptr)
+    set val = conv::read_u32(state_ptr)
+    conv::free_raw(state_ptr)
     return val
 }
 

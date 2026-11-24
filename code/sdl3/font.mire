@@ -1,13 +1,10 @@
 module font
+load sdl::sdl3::conv
 
 extern lib "SDL3"
 
 // ── C runtime helpers ──────────────────────────────────────────────
 extern fn rt_font_get_pixel: (ch :i64, col :i64, row :i64) :i64 lib "c"
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_write_u32: (ptr :i64, val :i64) lib "c"
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
 extern fn rt_blend_u32: (ptr :i64, color :i64, alpha :i64) lib "c"
 extern fn rt_read_ptr: (ptr :i64) :i64 lib "c"
 extern fn rt_strings_len: (s :&str) :i64 lib "c"
@@ -40,14 +37,14 @@ pub fn text_width: (text :&str, spacing :i64, scale :i64) :i64 {
 
 // ── Texture helpers ────────────────────────────────────────────────
 pub fn lock_texture_full: (tex :i64, pitch_out :i64) :i64 {
-    set pixels_out = rt_alloc_raw(8)
+    set pixels_out = conv::alloc_raw(8)
     set ok = SDL_LockTexture(tex, 0, pixels_out, pitch_out)
     if !ok {
-        rt_free_raw(pixels_out)
+        conv::free_raw(pixels_out)
         return 0
     }
     set pixel_data = rt_read_ptr(pixels_out)
-    rt_free_raw(pixels_out)
+    conv::free_raw(pixels_out)
     return pixel_data
 }
 
@@ -60,7 +57,7 @@ pub fn fill_buffer: (buf :i64, buf_w :i64, buf_h :i64, color :i64) {
     set total = buf_w * buf_h
     set i = 0 :i64 mut
     while i < total {
-        rt_write_u32(buf + i * 4, color)
+        conv::write_u32(buf + i * 4, color)
         set i = i + 1
     }
 }
@@ -84,7 +81,7 @@ pub fn fill_rect: (buf :i64, buf_w :i64, x :i64, y :i64, w :i64, h :i64, color :
         set row = buf + yy * buf_w * 4
         set xx = x :i64 mut
         while xx < x1 {
-            rt_write_u32(row + xx * 4, color)
+            conv::write_u32(row + xx * 4, color)
             set xx = xx + 1
         }
         set yy = yy + 1
@@ -139,7 +136,7 @@ pub fn draw_char_to_buffer: (buf :i64, buf_w :i64, x :i64, y :i64, ch :i64, colo
                            px >= 0 && px < buf_w && py >= 0 {
                             set off = (py * buf_w + px) * 4
                             if sx == 0 && sy == 0 {
-                                rt_write_u32(buf + off, color)
+                                conv::write_u32(buf + off, color)
                             } else {
                                 rt_blend_u32(buf + off, color, EDGE_A)
                             }

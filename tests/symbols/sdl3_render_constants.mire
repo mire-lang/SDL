@@ -1,0 +1,167 @@
+load sdl::sdl3::render
+load! /tests/_support/harness
+
+@[test]
+pub fn render_texture_access_static_success: () :bool {
+    return use! harness::check("render::texture_access_static", render::texture_access_static() == 0)
+}
+
+@[test]
+pub fn render_texture_access_streaming_success: () :bool {
+    return use! harness::check("render::texture_access_streaming", render::texture_access_streaming() == 1)
+}
+
+@[test]
+pub fn render_texture_access_target_success: () :bool {
+    return use! harness::check("render::texture_access_target", render::texture_access_target() == 2)
+}
+
+@[test]
+pub fn render_pixel_format_rgba8888_success: () :bool {
+    return use! harness::check("render::pixel_format_rgba8888", render::pixel_format_rgba8888() == 372645892)
+}
+
+@[test]
+pub fn render_pixel_format_bgra8888_success: () :bool {
+    return use! harness::check("render::pixel_format_bgra8888", render::pixel_format_bgra8888() == 376840196)
+}
+
+@[test]
+pub fn render_pixel_format_rgb24_success: () :bool {
+    return use! harness::check("render::pixel_format_rgb24", render::pixel_format_rgb24() == 386127691)
+}
+
+@[test]
+pub fn render_pixel_format_bgr24_success: () :bool {
+    return use! harness::check("render::pixel_format_bgr24", render::pixel_format_bgr24() == 390331915)
+}
+
+@[test]
+pub fn render_blend_mode_none_success: () :bool {
+    return use! harness::check("render::blend_mode_none", render::blend_mode_none() == 0)
+}
+
+@[test]
+pub fn render_blend_mode_blend_success: () :bool {
+    return use! harness::check("render::blend_mode_blend", render::blend_mode_blend() == 1)
+}
+
+@[test]
+pub fn render_blend_mode_add_success: () :bool {
+    return use! harness::check("render::blend_mode_add", render::blend_mode_add() == 2)
+}
+
+@[test]
+pub fn render_blend_mode_mod_success: () :bool {
+    return use! harness::check("render::blend_mode_mod", render::blend_mode_mod() == 4)
+}
+
+@[test]
+pub fn render_blend_mode_mul_success: () :bool {
+    return use! harness::check("render::blend_mode_mul", render::blend_mode_mul() == 8)
+}
+
+@[test]
+pub fn render_logical_presentation_disabled_success: () :bool {
+    return use! harness::check("render::logical_presentation_disabled", render::logical_presentation_disabled() == 0)
+}
+
+@[test]
+pub fn render_logical_presentation_stretch_success: () :bool {
+    return use! harness::check("render::logical_presentation_stretch", render::logical_presentation_stretch() == 1)
+}
+
+@[test]
+pub fn render_logical_presentation_letterbox_success: () :bool {
+    return use! harness::check("render::logical_presentation_letterbox", render::logical_presentation_letterbox() == 2)
+}
+
+@[test]
+pub fn render_logical_presentation_overscan_success: () :bool {
+    return use! harness::check("render::logical_presentation_overscan", render::logical_presentation_overscan() == 3)
+}
+
+@[test]
+pub fn render_logical_presentation_integer_scale_success: () :bool {
+    return use! harness::check("render::logical_presentation_integer_scale", render::logical_presentation_integer_scale() == 4)
+}
+
+@[test]
+pub fn render_vertex_size_success: () :bool {
+    return use! harness::check("render::vertex_size", render::vertex_size() == 32)
+}
+
+@[test]
+pub fn render_fpoint_size_success: () :bool {
+    return use! harness::check("render::fpoint_size", render::fpoint_size() == 8)
+}
+
+@[test]
+pub fn render_constants_limit: () :bool {
+    set ok = true :bool mut
+    if render::texture_access_static() < 0 { set ok = false }
+    if render::texture_access_static() != render::texture_access_static() { set ok = false }
+    if render::texture_access_streaming() < 0 { set ok = false }
+    if render::texture_access_streaming() != render::texture_access_streaming() { set ok = false }
+    if render::texture_access_target() < 0 { set ok = false }
+    if render::texture_access_target() != render::texture_access_target() { set ok = false }
+    if render::pixel_format_rgba8888() < 0 { set ok = false }
+    if render::pixel_format_rgba8888() != render::pixel_format_rgba8888() { set ok = false }
+    if render::pixel_format_bgra8888() < 0 { set ok = false }
+    if render::pixel_format_bgra8888() != render::pixel_format_bgra8888() { set ok = false }
+    if render::pixel_format_rgb24() < 0 { set ok = false }
+    if render::pixel_format_rgb24() != render::pixel_format_rgb24() { set ok = false }
+    if render::pixel_format_bgr24() < 0 { set ok = false }
+    if render::pixel_format_bgr24() != render::pixel_format_bgr24() { set ok = false }
+    if render::blend_mode_none() < 0 { set ok = false }
+    if render::blend_mode_none() != render::blend_mode_none() { set ok = false }
+    if render::blend_mode_blend() < 0 { set ok = false }
+    if render::blend_mode_blend() != render::blend_mode_blend() { set ok = false }
+    if render::blend_mode_add() < 0 { set ok = false }
+    if render::blend_mode_add() != render::blend_mode_add() { set ok = false }
+    if render::blend_mode_mod() < 0 { set ok = false }
+    if render::blend_mode_mod() != render::blend_mode_mod() { set ok = false }
+    if render::blend_mode_mul() < 0 { set ok = false }
+    if render::blend_mode_mul() != render::blend_mode_mul() { set ok = false }
+    if render::logical_presentation_disabled() < 0 { set ok = false }
+    if render::logical_presentation_disabled() != render::logical_presentation_disabled() { set ok = false }
+    if render::logical_presentation_stretch() < 0 { set ok = false }
+    if render::logical_presentation_stretch() != render::logical_presentation_stretch() { set ok = false }
+    if render::logical_presentation_letterbox() < 0 { set ok = false }
+    if render::logical_presentation_letterbox() != render::logical_presentation_letterbox() { set ok = false }
+    if render::logical_presentation_overscan() < 0 { set ok = false }
+    if render::logical_presentation_overscan() != render::logical_presentation_overscan() { set ok = false }
+    if render::logical_presentation_integer_scale() < 0 { set ok = false }
+    if render::logical_presentation_integer_scale() != render::logical_presentation_integer_scale() { set ok = false }
+    if render::vertex_size() < 0 { set ok = false }
+    if render::vertex_size() != render::vertex_size() { set ok = false }
+    if render::fpoint_size() < 0 { set ok = false }
+    if render::fpoint_size() != render::fpoint_size() { set ok = false }
+    return use! harness::check("render::constants/limit", ok)
+}
+
+@[test]
+pub fn render_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if render::texture_access_static() != render::texture_access_static() { set ok = false }
+    if render::texture_access_streaming() != render::texture_access_streaming() { set ok = false }
+    if render::texture_access_target() != render::texture_access_target() { set ok = false }
+    if render::pixel_format_rgba8888() != render::pixel_format_rgba8888() { set ok = false }
+    if render::pixel_format_bgra8888() != render::pixel_format_bgra8888() { set ok = false }
+    if render::pixel_format_rgb24() != render::pixel_format_rgb24() { set ok = false }
+    if render::pixel_format_bgr24() != render::pixel_format_bgr24() { set ok = false }
+    if render::blend_mode_none() != render::blend_mode_none() { set ok = false }
+    if render::blend_mode_blend() != render::blend_mode_blend() { set ok = false }
+    if render::blend_mode_add() != render::blend_mode_add() { set ok = false }
+    if render::blend_mode_mod() != render::blend_mode_mod() { set ok = false }
+    if render::blend_mode_mul() != render::blend_mode_mul() { set ok = false }
+    if render::logical_presentation_disabled() != render::logical_presentation_disabled() { set ok = false }
+    if render::logical_presentation_stretch() != render::logical_presentation_stretch() { set ok = false }
+    if render::logical_presentation_letterbox() != render::logical_presentation_letterbox() { set ok = false }
+    if render::logical_presentation_overscan() != render::logical_presentation_overscan() { set ok = false }
+    if render::logical_presentation_integer_scale() != render::logical_presentation_integer_scale() { set ok = false }
+    if render::vertex_size() != render::vertex_size() { set ok = false }
+    if render::fpoint_size() != render::fpoint_size() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_render", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("render::constants/anomaly", ok)
+}

@@ -1,4 +1,5 @@
 module render
+load sdl::sdl3::conv
 
 extern lib "SDL3"
 
@@ -56,11 +57,6 @@ extern fn SDL_GetCurrentRenderOutputSize: (renderer :i64, w :i64, h :i64) :bool 
 extern fn SDL_SetRenderTarget: (renderer :i64, texture :i64) :bool lib "SDL3"
 extern fn SDL_GetRenderTarget: (renderer :i64) :i64 lib "SDL3"
 
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_write_u32: (ptr :i64, val :i64) lib "c"
-extern fn rt_write_u8: (ptr :i64, val :i64) lib "c"
-extern fn rt_read_u8: (ptr :i64) :i64 lib "c"
 extern fn rt_write_f32: (ptr :i64, val :f64) lib "c"
 extern fn rt_read_ptr: (ptr :i64) :i64 lib "c"
 
@@ -86,78 +82,78 @@ pub fn logical_presentation_overscan: () :i64 { return 3 }
 pub fn logical_presentation_integer_scale: () :i64 { return 4 }
 
 pub fn color_white: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 255)
-    rt_write_u8(c + 1, 255)
-    rt_write_u8(c + 2, 255)
-    rt_write_u8(c + 3, 255)
+    conv::write_u8(c, 255)
+    conv::write_u8(c + 1, 255)
+    conv::write_u8(c + 2, 255)
+    conv::write_u8(c + 3, 255)
     return c
 }
 
 pub fn color_red: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 255)
-    rt_write_u8(c + 1, 0)
-    rt_write_u8(c + 2, 0)
-    rt_write_u8(c + 3, 255)
+    conv::write_u8(c, 255)
+    conv::write_u8(c + 1, 0)
+    conv::write_u8(c + 2, 0)
+    conv::write_u8(c + 3, 255)
     return c
 }
 
 pub fn color_green: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 0)
-    rt_write_u8(c + 1, 255)
-    rt_write_u8(c + 2, 0)
-    rt_write_u8(c + 3, 255)
+    conv::write_u8(c, 0)
+    conv::write_u8(c + 1, 255)
+    conv::write_u8(c + 2, 0)
+    conv::write_u8(c + 3, 255)
     return c
 }
 
 pub fn color_blue: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 0)
-    rt_write_u8(c + 1, 0)
-    rt_write_u8(c + 2, 255)
-    rt_write_u8(c + 3, 255)
+    conv::write_u8(c, 0)
+    conv::write_u8(c + 1, 0)
+    conv::write_u8(c + 2, 255)
+    conv::write_u8(c + 3, 255)
     return c
 }
 
 pub fn color_black: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 0)
-    rt_write_u8(c + 1, 0)
-    rt_write_u8(c + 2, 0)
-    rt_write_u8(c + 3, 255)
+    conv::write_u8(c, 0)
+    conv::write_u8(c + 1, 0)
+    conv::write_u8(c + 2, 0)
+    conv::write_u8(c + 3, 255)
     return c
 }
 
 pub fn color_clear: () :i64 {
-    set c = rt_alloc_raw(4)
+    set c = conv::alloc_raw(4)
     if c == 0 { return 0 }
-    rt_write_u8(c, 0)
-    rt_write_u8(c + 1, 0)
-    rt_write_u8(c + 2, 0)
-    rt_write_u8(c + 3, 0)
+    conv::write_u8(c, 0)
+    conv::write_u8(c + 1, 0)
+    conv::write_u8(c + 2, 0)
+    conv::write_u8(c + 3, 0)
     return c
 }
 
 pub fn color_destroy: (color_ptr :i64) {
-    if color_ptr != 0 { rt_free_raw(color_ptr) }
+    if color_ptr != 0 { conv::free_raw(color_ptr) }
 }
 
-pub fn color_get_r: (color_ptr :i64) :i64 { return rt_read_u8(color_ptr) }
-pub fn color_get_g: (color_ptr :i64) :i64 { return rt_read_u8(color_ptr + 1) }
-pub fn color_get_b: (color_ptr :i64) :i64 { return rt_read_u8(color_ptr + 2) }
-pub fn color_get_a: (color_ptr :i64) :i64 { return rt_read_u8(color_ptr + 3) }
+pub fn color_get_r: (color_ptr :i64) :i64 { return conv::read_u8(color_ptr) }
+pub fn color_get_g: (color_ptr :i64) :i64 { return conv::read_u8(color_ptr + 1) }
+pub fn color_get_b: (color_ptr :i64) :i64 { return conv::read_u8(color_ptr + 2) }
+pub fn color_get_a: (color_ptr :i64) :i64 { return conv::read_u8(color_ptr + 3) }
 
-pub fn color_set_r: (color_ptr :i64, r :i64) { rt_write_u8(color_ptr, r) }
-pub fn color_set_g: (color_ptr :i64, g :i64) { rt_write_u8(color_ptr + 1, g) }
-pub fn color_set_b: (color_ptr :i64, b :i64) { rt_write_u8(color_ptr + 2, b) }
-pub fn color_set_a: (color_ptr :i64, a :i64) { rt_write_u8(color_ptr + 3, a) }
+pub fn color_set_r: (color_ptr :i64, r :i64) { conv::write_u8(color_ptr, r) }
+pub fn color_set_g: (color_ptr :i64, g :i64) { conv::write_u8(color_ptr + 1, g) }
+pub fn color_set_b: (color_ptr :i64, b :i64) { conv::write_u8(color_ptr + 2, b) }
+pub fn color_set_a: (color_ptr :i64, a :i64) { conv::write_u8(color_ptr + 3, a) }
 
 pub fn create_renderer: (win :i64) :i64 {
     return SDL_CreateRenderer(win 0)
@@ -313,30 +309,29 @@ pub fn get_render_target: (rend :i64) :i64 {
 }
 
 pub fn create_rect: (x :i64, y :i64, w :i64, h :i64) :i64 {
-    set ptr = rt_alloc_raw(16)
+    set ptr = conv::alloc_raw(16)
     if ptr == 0 { return 0 }
-    rt_write_u32(ptr, x)
-    rt_write_u32(ptr + 4, y)
-    rt_write_u32(ptr + 8, w)
-    rt_write_u32(ptr + 12, h)
+    conv::write_u32(ptr, x)
+    conv::write_u32(ptr + 4, y)
+    conv::write_u32(ptr + 8, w)
+    conv::write_u32(ptr + 12, h)
     return ptr
 }
 
 pub fn destroy_rect: (ptr :i64) {
-    if ptr != 0 { rt_free_raw(ptr) }
+    if ptr != 0 { conv::free_raw(ptr) }
 }
 
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
 
-pub fn rect_get_x: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr) }
-pub fn rect_get_y: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 4) }
-pub fn rect_get_w: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 8) }
-pub fn rect_get_h: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 12) }
+pub fn rect_get_x: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr) }
+pub fn rect_get_y: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 4) }
+pub fn rect_get_w: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 8) }
+pub fn rect_get_h: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 12) }
 
-pub fn rect_set_x: (rect_ptr :i64, x :i64) { rt_write_u32(rect_ptr, x) }
-pub fn rect_set_y: (rect_ptr :i64, y :i64) { rt_write_u32(rect_ptr + 4, y) }
-pub fn rect_set_w: (rect_ptr :i64, w :i64) { rt_write_u32(rect_ptr + 8, w) }
-pub fn rect_set_h: (rect_ptr :i64, h :i64) { rt_write_u32(rect_ptr + 12, h) }
+pub fn rect_set_x: (rect_ptr :i64, x :i64) { conv::write_u32(rect_ptr, x) }
+pub fn rect_set_y: (rect_ptr :i64, y :i64) { conv::write_u32(rect_ptr + 4, y) }
+pub fn rect_set_w: (rect_ptr :i64, w :i64) { conv::write_u32(rect_ptr + 8, w) }
+pub fn rect_set_h: (rect_ptr :i64, h :i64) { conv::write_u32(rect_ptr + 12, h) }
 
 pub fn render_texture_xywh: (rend :i64, tex :i64, src_x :i64, src_y :i64, src_w :i64, src_h :i64, dst_x :i64, dst_y :i64, dst_w :i64, dst_h :i64) :bool {
     set src = use! render::create_rect(src_x src_y src_w src_h)
@@ -358,7 +353,7 @@ pub fn render_texture_xywh: (rend :i64, tex :i64, src_x :i64, src_y :i64, src_w 
 pub fn vertex_size: () :i64 { return 32 }
 
 pub fn create_vertex: (x :f64, y :f64, r :f64, g :f64, b :f64, a :f64, u :f64, v :f64) :i64 {
-    set ptr = rt_alloc_raw(use! render::vertex_size())
+    set ptr = conv::alloc_raw(use! render::vertex_size())
     if ptr == 0 { return 0 }
     use! render::vertex_set_position(ptr, x, y)
     use! render::vertex_set_color(ptr, r, g, b, a)
@@ -393,7 +388,7 @@ pub fn render_geometry: (rend :i64, tex :i64, vertices_ptr :i64, num_vertices :i
 pub fn fpoint_size: () :i64 { return 8 }
 
 pub fn create_fpoint: (x :f64, y :f64) :i64 {
-    set ptr = rt_alloc_raw(use! render::fpoint_size())
+    set ptr = conv::alloc_raw(use! render::fpoint_size())
     if ptr == 0 { return 0 }
     rt_write_f32(ptr, x)
     rt_write_f32(ptr + 4, y)
@@ -413,17 +408,17 @@ pub fn render_lines: (rend :i64, points_ptr :i64, count :i64) :bool {
 // and returns the pixel pointer via rt_read_ptr. Pass 0 for rect to lock entire texture.
 
 pub fn lock_texture: (tex :i64) :i64 {
-    set pixels_ptr = rt_alloc_raw(8)
-    set pitch_ptr = rt_alloc_raw(8)
+    set pixels_ptr = conv::alloc_raw(8)
+    set pitch_ptr = conv::alloc_raw(8)
     set ok = SDL_LockTexture(tex, 0, pixels_ptr, pitch_ptr)
     if !ok {
-        rt_free_raw(pixels_ptr)
-        rt_free_raw(pitch_ptr)
+        conv::free_raw(pixels_ptr)
+        conv::free_raw(pitch_ptr)
         return 0
     }
     set pixel_data = rt_read_ptr(pixels_ptr)
-    rt_free_raw(pixels_ptr)
-    rt_free_raw(pitch_ptr)
+    conv::free_raw(pixels_ptr)
+    conv::free_raw(pitch_ptr)
     return pixel_data
 }
 

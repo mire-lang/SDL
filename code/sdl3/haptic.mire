@@ -1,4 +1,5 @@
 module haptic
+load sdl::sdl3::conv
 
 extern lib "SDL3"
 
@@ -27,16 +28,13 @@ extern fn SDL_StopHapticEffects: (haptic :i64) :bool lib "SDL3"
 extern fn SDL_SetHapticGain: (haptic :i64, gain :i64) :bool lib "SDL3"
 extern fn SDL_SetHapticAutocenter: (haptic :i64, autocenter :i64) :bool lib "SDL3"
 
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
 
 pub fn get_count: () :i64 {
-    set count_ptr = rt_alloc_raw(4)
+    set count_ptr = conv::alloc_raw(4)
     if count_ptr == 0 { return 0 }
     SDL_GetHaptics(count_ptr)
-    set count = rt_read_u32(count_ptr)
-    rt_free_raw(count_ptr)
+    set count = conv::read_u32(count_ptr)
+    conv::free_raw(count_ptr)
     return count
 }
 

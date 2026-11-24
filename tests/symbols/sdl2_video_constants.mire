@@ -1,0 +1,183 @@
+load sdl::sdl2::video
+load! /tests/_support/harness
+
+@[test]
+pub fn video_window_flag_fullscreen_success: () :bool {
+    return use! harness::check("video::window_flag_fullscreen", video::window_flag_fullscreen() == 0x00000001)
+}
+
+@[test]
+pub fn video_window_flag_opengl_success: () :bool {
+    return use! harness::check("video::window_flag_opengl", video::window_flag_opengl() == 0x00000002)
+}
+
+@[test]
+pub fn video_window_flag_shown_success: () :bool {
+    return use! harness::check("video::window_flag_shown", video::window_flag_shown() == 0x00000004)
+}
+
+@[test]
+pub fn video_window_flag_hidden_success: () :bool {
+    return use! harness::check("video::window_flag_hidden", video::window_flag_hidden() == 0x00000008)
+}
+
+@[test]
+pub fn video_window_flag_borderless_success: () :bool {
+    return use! harness::check("video::window_flag_borderless", video::window_flag_borderless() == 0x00000010)
+}
+
+@[test]
+pub fn video_window_flag_resizable_success: () :bool {
+    return use! harness::check("video::window_flag_resizable", video::window_flag_resizable() == 0x00000020)
+}
+
+@[test]
+pub fn video_window_flag_minimized_success: () :bool {
+    return use! harness::check("video::window_flag_minimized", video::window_flag_minimized() == 0x00000040)
+}
+
+@[test]
+pub fn video_window_flag_maximized_success: () :bool {
+    return use! harness::check("video::window_flag_maximized", video::window_flag_maximized() == 0x00000080)
+}
+
+@[test]
+pub fn video_window_flag_mouse_grabbed_success: () :bool {
+    return use! harness::check("video::window_flag_mouse_grabbed", video::window_flag_mouse_grabbed() == 0x00000100)
+}
+
+@[test]
+pub fn video_window_flag_input_focus_success: () :bool {
+    return use! harness::check("video::window_flag_input_focus", video::window_flag_input_focus() == 0x00000200)
+}
+
+@[test]
+pub fn video_window_flag_mouse_focus_success: () :bool {
+    return use! harness::check("video::window_flag_mouse_focus", video::window_flag_mouse_focus() == 0x00000400)
+}
+
+@[test]
+pub fn video_window_flag_fullscreen_desktop_success: () :bool {
+    return use! harness::check("video::window_flag_fullscreen_desktop", video::window_flag_fullscreen_desktop() == 0x00001001)
+}
+
+@[test]
+pub fn video_window_flag_foreign_success: () :bool {
+    return use! harness::check("video::window_flag_foreign", video::window_flag_foreign() == 0x00000800)
+}
+
+@[test]
+pub fn video_window_flag_allow_highdpi_success: () :bool {
+    return use! harness::check("video::window_flag_allow_highdpi", video::window_flag_allow_highdpi() == 0x00002000)
+}
+
+@[test]
+pub fn video_window_flag_mouse_capture_success: () :bool {
+    return use! harness::check("video::window_flag_mouse_capture", video::window_flag_mouse_capture() == 0x00004000)
+}
+
+@[test]
+pub fn video_window_flag_always_on_top_success: () :bool {
+    return use! harness::check("video::window_flag_always_on_top", video::window_flag_always_on_top() == 0x00008000)
+}
+
+@[test]
+pub fn video_window_flag_skip_taskbar_success: () :bool {
+    return use! harness::check("video::window_flag_skip_taskbar", video::window_flag_skip_taskbar() == 0x00010000)
+}
+
+@[test]
+pub fn video_window_flag_utility_success: () :bool {
+    return use! harness::check("video::window_flag_utility", video::window_flag_utility() == 0x00020000)
+}
+
+@[test]
+pub fn video_window_flag_tooltip_success: () :bool {
+    return use! harness::check("video::window_flag_tooltip", video::window_flag_tooltip() == 0x00040000)
+}
+
+@[test]
+pub fn video_window_flag_popup_menu_success: () :bool {
+    return use! harness::check("video::window_flag_popup_menu", video::window_flag_popup_menu() == 0x00080000)
+}
+
+@[test]
+pub fn video_window_flag_vulkan_success: () :bool {
+    return use! harness::check("video::window_flag_vulkan", video::window_flag_vulkan() == 0x00100000)
+}
+
+@[test]
+pub fn video_constants_limit: () :bool {
+    set ok = true :bool mut
+    if video::window_flag_fullscreen() < 0 { set ok = false }
+    if video::window_flag_fullscreen() != video::window_flag_fullscreen() { set ok = false }
+    if video::window_flag_opengl() < 0 { set ok = false }
+    if video::window_flag_opengl() != video::window_flag_opengl() { set ok = false }
+    if video::window_flag_shown() < 0 { set ok = false }
+    if video::window_flag_shown() != video::window_flag_shown() { set ok = false }
+    if video::window_flag_hidden() < 0 { set ok = false }
+    if video::window_flag_hidden() != video::window_flag_hidden() { set ok = false }
+    if video::window_flag_borderless() < 0 { set ok = false }
+    if video::window_flag_borderless() != video::window_flag_borderless() { set ok = false }
+    if video::window_flag_resizable() < 0 { set ok = false }
+    if video::window_flag_resizable() != video::window_flag_resizable() { set ok = false }
+    if video::window_flag_minimized() < 0 { set ok = false }
+    if video::window_flag_minimized() != video::window_flag_minimized() { set ok = false }
+    if video::window_flag_maximized() < 0 { set ok = false }
+    if video::window_flag_maximized() != video::window_flag_maximized() { set ok = false }
+    if video::window_flag_mouse_grabbed() < 0 { set ok = false }
+    if video::window_flag_mouse_grabbed() != video::window_flag_mouse_grabbed() { set ok = false }
+    if video::window_flag_input_focus() < 0 { set ok = false }
+    if video::window_flag_input_focus() != video::window_flag_input_focus() { set ok = false }
+    if video::window_flag_mouse_focus() < 0 { set ok = false }
+    if video::window_flag_mouse_focus() != video::window_flag_mouse_focus() { set ok = false }
+    if video::window_flag_fullscreen_desktop() < 0 { set ok = false }
+    if video::window_flag_fullscreen_desktop() != video::window_flag_fullscreen_desktop() { set ok = false }
+    if video::window_flag_foreign() < 0 { set ok = false }
+    if video::window_flag_foreign() != video::window_flag_foreign() { set ok = false }
+    if video::window_flag_allow_highdpi() < 0 { set ok = false }
+    if video::window_flag_allow_highdpi() != video::window_flag_allow_highdpi() { set ok = false }
+    if video::window_flag_mouse_capture() < 0 { set ok = false }
+    if video::window_flag_mouse_capture() != video::window_flag_mouse_capture() { set ok = false }
+    if video::window_flag_always_on_top() < 0 { set ok = false }
+    if video::window_flag_always_on_top() != video::window_flag_always_on_top() { set ok = false }
+    if video::window_flag_skip_taskbar() < 0 { set ok = false }
+    if video::window_flag_skip_taskbar() != video::window_flag_skip_taskbar() { set ok = false }
+    if video::window_flag_utility() < 0 { set ok = false }
+    if video::window_flag_utility() != video::window_flag_utility() { set ok = false }
+    if video::window_flag_tooltip() < 0 { set ok = false }
+    if video::window_flag_tooltip() != video::window_flag_tooltip() { set ok = false }
+    if video::window_flag_popup_menu() < 0 { set ok = false }
+    if video::window_flag_popup_menu() != video::window_flag_popup_menu() { set ok = false }
+    if video::window_flag_vulkan() < 0 { set ok = false }
+    if video::window_flag_vulkan() != video::window_flag_vulkan() { set ok = false }
+    return use! harness::check("video::constants/limit", ok)
+}
+
+@[test]
+pub fn video_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if video::window_flag_fullscreen() != video::window_flag_fullscreen() { set ok = false }
+    if video::window_flag_opengl() != video::window_flag_opengl() { set ok = false }
+    if video::window_flag_shown() != video::window_flag_shown() { set ok = false }
+    if video::window_flag_hidden() != video::window_flag_hidden() { set ok = false }
+    if video::window_flag_borderless() != video::window_flag_borderless() { set ok = false }
+    if video::window_flag_resizable() != video::window_flag_resizable() { set ok = false }
+    if video::window_flag_minimized() != video::window_flag_minimized() { set ok = false }
+    if video::window_flag_maximized() != video::window_flag_maximized() { set ok = false }
+    if video::window_flag_mouse_grabbed() != video::window_flag_mouse_grabbed() { set ok = false }
+    if video::window_flag_input_focus() != video::window_flag_input_focus() { set ok = false }
+    if video::window_flag_mouse_focus() != video::window_flag_mouse_focus() { set ok = false }
+    if video::window_flag_fullscreen_desktop() != video::window_flag_fullscreen_desktop() { set ok = false }
+    if video::window_flag_foreign() != video::window_flag_foreign() { set ok = false }
+    if video::window_flag_allow_highdpi() != video::window_flag_allow_highdpi() { set ok = false }
+    if video::window_flag_mouse_capture() != video::window_flag_mouse_capture() { set ok = false }
+    if video::window_flag_always_on_top() != video::window_flag_always_on_top() { set ok = false }
+    if video::window_flag_skip_taskbar() != video::window_flag_skip_taskbar() { set ok = false }
+    if video::window_flag_utility() != video::window_flag_utility() { set ok = false }
+    if video::window_flag_tooltip() != video::window_flag_tooltip() { set ok = false }
+    if video::window_flag_popup_menu() != video::window_flag_popup_menu() { set ok = false }
+    if video::window_flag_vulkan() != video::window_flag_vulkan() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_video", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("video::constants/anomaly", ok)
+}

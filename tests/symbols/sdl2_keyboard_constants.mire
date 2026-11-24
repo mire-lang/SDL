@@ -1,0 +1,95 @@
+load sdl::sdl2::keyboard
+load! /tests/_support/harness
+
+@[test]
+pub fn keyboard_mod_none_success: () :bool {
+    return use! harness::check("keyboard::mod_none", keyboard::mod_none() == 0x0000)
+}
+
+@[test]
+pub fn keyboard_mod_left_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_left_shift", keyboard::mod_left_shift() == 0x0001)
+}
+
+@[test]
+pub fn keyboard_mod_right_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_right_shift", keyboard::mod_right_shift() == 0x0002)
+}
+
+@[test]
+pub fn keyboard_mod_left_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_left_ctrl", keyboard::mod_left_ctrl() == 0x0040)
+}
+
+@[test]
+pub fn keyboard_mod_right_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_right_ctrl", keyboard::mod_right_ctrl() == 0x0080)
+}
+
+@[test]
+pub fn keyboard_mod_left_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_left_alt", keyboard::mod_left_alt() == 0x0100)
+}
+
+@[test]
+pub fn keyboard_mod_right_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_right_alt", keyboard::mod_right_alt() == 0x0200)
+}
+
+@[test]
+pub fn keyboard_mod_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_shift", keyboard::mod_shift() == 0x0003)
+}
+
+@[test]
+pub fn keyboard_mod_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_ctrl", keyboard::mod_ctrl() == 0x00C0)
+}
+
+@[test]
+pub fn keyboard_mod_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_alt", keyboard::mod_alt() == 0x0300)
+}
+
+@[test]
+pub fn keyboard_constants_limit: () :bool {
+    set ok = true :bool mut
+    if keyboard::mod_none() < 0 { set ok = false }
+    if keyboard::mod_none() != keyboard::mod_none() { set ok = false }
+    if keyboard::mod_left_shift() < 0 { set ok = false }
+    if keyboard::mod_left_shift() != keyboard::mod_left_shift() { set ok = false }
+    if keyboard::mod_right_shift() < 0 { set ok = false }
+    if keyboard::mod_right_shift() != keyboard::mod_right_shift() { set ok = false }
+    if keyboard::mod_left_ctrl() < 0 { set ok = false }
+    if keyboard::mod_left_ctrl() != keyboard::mod_left_ctrl() { set ok = false }
+    if keyboard::mod_right_ctrl() < 0 { set ok = false }
+    if keyboard::mod_right_ctrl() != keyboard::mod_right_ctrl() { set ok = false }
+    if keyboard::mod_left_alt() < 0 { set ok = false }
+    if keyboard::mod_left_alt() != keyboard::mod_left_alt() { set ok = false }
+    if keyboard::mod_right_alt() < 0 { set ok = false }
+    if keyboard::mod_right_alt() != keyboard::mod_right_alt() { set ok = false }
+    if keyboard::mod_shift() < 0 { set ok = false }
+    if keyboard::mod_shift() != keyboard::mod_shift() { set ok = false }
+    if keyboard::mod_ctrl() < 0 { set ok = false }
+    if keyboard::mod_ctrl() != keyboard::mod_ctrl() { set ok = false }
+    if keyboard::mod_alt() < 0 { set ok = false }
+    if keyboard::mod_alt() != keyboard::mod_alt() { set ok = false }
+    return use! harness::check("keyboard::constants/limit", ok)
+}
+
+@[test]
+pub fn keyboard_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if keyboard::mod_none() != keyboard::mod_none() { set ok = false }
+    if keyboard::mod_left_shift() != keyboard::mod_left_shift() { set ok = false }
+    if keyboard::mod_right_shift() != keyboard::mod_right_shift() { set ok = false }
+    if keyboard::mod_left_ctrl() != keyboard::mod_left_ctrl() { set ok = false }
+    if keyboard::mod_right_ctrl() != keyboard::mod_right_ctrl() { set ok = false }
+    if keyboard::mod_left_alt() != keyboard::mod_left_alt() { set ok = false }
+    if keyboard::mod_right_alt() != keyboard::mod_right_alt() { set ok = false }
+    if keyboard::mod_shift() != keyboard::mod_shift() { set ok = false }
+    if keyboard::mod_ctrl() != keyboard::mod_ctrl() { set ok = false }
+    if keyboard::mod_alt() != keyboard::mod_alt() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_keyboard", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("keyboard::constants/anomaly", ok)
+}
