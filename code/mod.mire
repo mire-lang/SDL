@@ -1,0 +1,19 @@
+// SDL bindings for Mire (SDL2 + SDL3)
+// Version: 1.0.1
+
+// ── status() ──────────────────────────────────────────────────────────
+// Returns a phpinfo-style console report of the library: name, version,
+// build profile, runtime tier, exported modules, and configuration.
+// Intended for `use dasu(sdl::status())` or direct `use sdl::status()`
+// to inspect what a loaded library provides.
+pub fn status: () :str {
+    set report = "════════════════════════════════════════════════════════════════" :str mut
+    set report = report + "\nLibrary:    sdl" + "\n"
+    set report = report + "Version:    1.0.1" + "\n"
+    set report = report + "Description: SDL bindings for Mire (SDL2 + SDL3)" + "\n"
+    set report = report + "Runtime:    Mire / Avenys (minimal tier)" + "\n"
+    set report = report + "Exports:    sdl2, sdl3" + "\n"
+    set report = report + "Status:     active" + "\n"
+    set report = report + "════════════════════════════════════════════════════════════════" + "\n"
+    return report
+}
