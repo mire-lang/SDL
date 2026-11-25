@@ -1,6 +1,6 @@
 # sdl — SDL2 + SDL3 bindings for Mire
 
-Version **1.3.1** — [CHANGELOG](docs/CHANGELOG.md)
+Version **1.3.2** — [CHANGELOG](CHANGELOG.md)
 
 SDL bindings for the Mire language ecosystem. Exposes both SDL3 and SDL2
 C APIs for video, rendering, audio, events, clipboard, timer, and a set of
@@ -29,6 +29,19 @@ use `:bool` (`_Bool` in C).
 | `get_ticks_ns()` | `i64` | Nanoseconds since SDL init |
 | `set_hint(name, value)` | `bool` | Set a hint |
 | `get_hint(name)` | `str` | Get a hint value |
+
+### sdl3::conv — i64-handle runtime helpers
+
+SDL takes pointer values as integers. These wrappers keep that convention at
+the binding edge and call `mire::aux::pal` internally, so a program that loads
+both `sdl` and `mire` no longer collides on `rt_alloc_raw`/`rt_read_*`.
+
+| Function | Returns | Description |
+|----------|---------|-------------|
+| `alloc_raw(size)` | `i64` | Allocate `size` bytes, as a handle |
+| `free_raw(ptr)` | — | Release a handle from `alloc_raw` |
+| `read_u8/u16/u32/u64(ptr)` | `i64` | Read an unsigned value at `ptr` |
+| `write_u8/u16/u32/u64(ptr, value)` | — | Write an unsigned value at `ptr` |
 
 ### sdl3::events — Event polling and type constants
 
@@ -307,6 +320,11 @@ use `:i64` (0 = success, negative = error), matching SDL2's C `int` return.
 | `get_ticks()` | `i64` | Milliseconds since init |
 | `set_hint(name, value)` | `bool` | Set hint |
 | `get_hint(name)` | `str` | Get hint |
+
+### sdl2::conv — i64-handle runtime helpers
+
+Same surface as `sdl3::conv`: `alloc_raw`, `free_raw`, `read_u8/u16/u32/u64`
+and `write_u8/u16/u32/u64`, all taking and returning `i64` handles.
 
 ### sdl2::events — Event polling
 
@@ -651,10 +669,11 @@ session and are kept out of the default suite.
 - **`:bool` vs `:i64` ABI**: SDL3 C API uses `_Bool` (1 byte in `al` register),
  SDL2 uses `int` (4 bytes in `eax`). Return types must match exactly for
  correct x86_64 calling convention.
-- **Event buffer**: Pass a `i64` pointer (use Mire's `rt_alloc` for SDL_Event
- struct, 128 bytes on x86_64). Event type and window event subtype read via
- `rt_read_u32` / `rt_read_u8` helpers.
+- **Event buffer**: Pass an `i64` pointer (use `sdl3::conv::alloc_raw` for the
+ SDL_Event struct, 128 bytes on x86_64). Read the event type with
+ `conv::read_u32` and the window-event subtype with `conv::read_u8`; release
+ the buffer with `conv::free_raw`. `sdl2::conv` exposes the same helpers.
 
 ## Version
 
-**1.3.1** — See [CHANGELOG.md](docs/CHANGELOG.md).
+**1.3.2** — See [CHANGELOG.md](CHANGELOG.md).
