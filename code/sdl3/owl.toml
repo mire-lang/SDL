@@ -4,6 +4,7 @@ version = "0.1.0"
 entry = "mod.mire"
 
 [exports]
+conv = "conv.mire"
 events = "events.mire"
 render = "render.mire"
 video = "video.mire"

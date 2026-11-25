@@ -1,0 +1,39 @@
+module conv
+
+// Runtime byte access with an i64 handle. SDL's C entry points take pointer
+// values as integers, and so does the rest of this binding. The runtime's own
+// declarations use `ptr`; calling them from here and converting at the edge
+// keeps one honest signature in the program while the SDL-facing code stays
+// unchanged. Declaring `rt_alloc_raw` locally with `:i64` used to collide with
+// `mire::aux::pal` whenever a program loaded both.
+
+load mire::aux::pal
+
+fn as_ptr: (p :i64) :ptr {
+    set q = p :ptr
+    return q
+}
+
+fn as_i64: (p :ptr) :i64 {
+    set q = p :i64
+    return q
+}
+
+pub fn alloc_raw: (size :i64) :i64 {
+    set p = pal::bytes_alloc(size)
+    return as_i64(p)
+}
+
+pub fn free_raw: (p :i64) {
+    pal::bytes_free(as_ptr(p))
+}
+
+pub fn read_u8: (p :i64) :i64 { return pal::read_u8(as_ptr(p)) }
+pub fn read_u16: (p :i64) :i64 { return pal::read_u16(as_ptr(p)) }
+pub fn read_u32: (p :i64) :i64 { return pal::read_u32(as_ptr(p)) }
+pub fn read_u64: (p :i64) :i64 { return pal::read_u64(as_ptr(p)) }
+
+pub fn write_u8: (p :i64, value :i64) { pal::write_u8(as_ptr(p) value) }
+pub fn write_u16: (p :i64, value :i64) { pal::write_u16(as_ptr(p) value) }
+pub fn write_u32: (p :i64, value :i64) { pal::write_u32(as_ptr(p) value) }
+pub fn write_u64: (p :i64, value :i64) { pal::write_u64(as_ptr(p) value) }

@@ -1,0 +1,87 @@
+load sdl::sdl3::filesystem
+load! /tests/_support/harness
+
+@[test]
+pub fn filesystem_folder_home_success: () :bool {
+    return use! harness::check("filesystem::folder_home", filesystem::folder_home() == 0)
+}
+
+@[test]
+pub fn filesystem_folder_desktop_success: () :bool {
+    return use! harness::check("filesystem::folder_desktop", filesystem::folder_desktop() == 1)
+}
+
+@[test]
+pub fn filesystem_folder_documents_success: () :bool {
+    return use! harness::check("filesystem::folder_documents", filesystem::folder_documents() == 2)
+}
+
+@[test]
+pub fn filesystem_folder_downloads_success: () :bool {
+    return use! harness::check("filesystem::folder_downloads", filesystem::folder_downloads() == 3)
+}
+
+@[test]
+pub fn filesystem_folder_music_success: () :bool {
+    return use! harness::check("filesystem::folder_music", filesystem::folder_music() == 4)
+}
+
+@[test]
+pub fn filesystem_folder_pictures_success: () :bool {
+    return use! harness::check("filesystem::folder_pictures", filesystem::folder_pictures() == 5)
+}
+
+@[test]
+pub fn filesystem_folder_publicshare_success: () :bool {
+    return use! harness::check("filesystem::folder_publicshare", filesystem::folder_publicshare() == 6)
+}
+
+@[test]
+pub fn filesystem_folder_savedgames_success: () :bool {
+    return use! harness::check("filesystem::folder_savedgames", filesystem::folder_savedgames() == 7)
+}
+
+@[test]
+pub fn filesystem_folder_screenshots_success: () :bool {
+    return use! harness::check("filesystem::folder_screenshots", filesystem::folder_screenshots() == 8)
+}
+
+@[test]
+pub fn filesystem_constants_limit: () :bool {
+    set ok = true :bool mut
+    if filesystem::folder_home() < 0 { set ok = false }
+    if filesystem::folder_home() != filesystem::folder_home() { set ok = false }
+    if filesystem::folder_desktop() < 0 { set ok = false }
+    if filesystem::folder_desktop() != filesystem::folder_desktop() { set ok = false }
+    if filesystem::folder_documents() < 0 { set ok = false }
+    if filesystem::folder_documents() != filesystem::folder_documents() { set ok = false }
+    if filesystem::folder_downloads() < 0 { set ok = false }
+    if filesystem::folder_downloads() != filesystem::folder_downloads() { set ok = false }
+    if filesystem::folder_music() < 0 { set ok = false }
+    if filesystem::folder_music() != filesystem::folder_music() { set ok = false }
+    if filesystem::folder_pictures() < 0 { set ok = false }
+    if filesystem::folder_pictures() != filesystem::folder_pictures() { set ok = false }
+    if filesystem::folder_publicshare() < 0 { set ok = false }
+    if filesystem::folder_publicshare() != filesystem::folder_publicshare() { set ok = false }
+    if filesystem::folder_savedgames() < 0 { set ok = false }
+    if filesystem::folder_savedgames() != filesystem::folder_savedgames() { set ok = false }
+    if filesystem::folder_screenshots() < 0 { set ok = false }
+    if filesystem::folder_screenshots() != filesystem::folder_screenshots() { set ok = false }
+    return use! harness::check("filesystem::constants/limit", ok)
+}
+
+@[test]
+pub fn filesystem_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if filesystem::folder_home() != filesystem::folder_home() { set ok = false }
+    if filesystem::folder_desktop() != filesystem::folder_desktop() { set ok = false }
+    if filesystem::folder_documents() != filesystem::folder_documents() { set ok = false }
+    if filesystem::folder_downloads() != filesystem::folder_downloads() { set ok = false }
+    if filesystem::folder_music() != filesystem::folder_music() { set ok = false }
+    if filesystem::folder_pictures() != filesystem::folder_pictures() { set ok = false }
+    if filesystem::folder_publicshare() != filesystem::folder_publicshare() { set ok = false }
+    if filesystem::folder_savedgames() != filesystem::folder_savedgames() { set ok = false }
+    if filesystem::folder_screenshots() != filesystem::folder_screenshots() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_filesystem", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("filesystem::constants/anomaly", ok)
+}

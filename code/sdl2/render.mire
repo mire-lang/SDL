@@ -1,4 +1,5 @@
 module render
+load sdl::sdl2::conv
 
 extern lib "SDL2"
 
@@ -43,10 +44,6 @@ extern fn SDL_GetRendererOutputSize: (renderer :i64, w :i64, h :i64) :i64 lib "S
 extern fn SDL_SetRenderTarget: (renderer :i64, texture :i64) :i64 lib "SDL2"
 extern fn SDL_GetRenderTarget: (renderer :i64) :i64 lib "SDL2"
 
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_write_u32: (ptr :i64, val :i64) lib "c"
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
 
 pub fn texture_access_static: () :i64 { return 0 }
 pub fn texture_access_streaming: () :i64 { return 1 }
@@ -206,25 +203,25 @@ pub fn set_render_target: (rend :i64, tex :i64) :i64 { return SDL_SetRenderTarge
 pub fn get_render_target: (rend :i64) :i64 { return SDL_GetRenderTarget(rend) }
 
 pub fn create_rect: (x :i64, y :i64, w :i64, h :i64) :i64 {
-    set ptr = rt_alloc_raw(16)
+    set ptr = conv::alloc_raw(16)
     if ptr == 0 { return 0 }
-    rt_write_u32(ptr, x)
-    rt_write_u32(ptr + 4, y)
-    rt_write_u32(ptr + 8, w)
-    rt_write_u32(ptr + 12, h)
+    conv::write_u32(ptr, x)
+    conv::write_u32(ptr + 4, y)
+    conv::write_u32(ptr + 8, w)
+    conv::write_u32(ptr + 12, h)
     return ptr
 }
 
 pub fn destroy_rect: (ptr :i64) {
-    if ptr != 0 { rt_free_raw(ptr) }
+    if ptr != 0 { conv::free_raw(ptr) }
 }
 
-pub fn rect_get_x: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr) }
-pub fn rect_get_y: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 4) }
-pub fn rect_get_w: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 8) }
-pub fn rect_get_h: (rect_ptr :i64) :i64 { return rt_read_u32(rect_ptr + 12) }
+pub fn rect_get_x: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr) }
+pub fn rect_get_y: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 4) }
+pub fn rect_get_w: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 8) }
+pub fn rect_get_h: (rect_ptr :i64) :i64 { return conv::read_u32(rect_ptr + 12) }
 
-pub fn rect_set_x: (rect_ptr :i64, x :i64) { rt_write_u32(rect_ptr, x) }
-pub fn rect_set_y: (rect_ptr :i64, y :i64) { rt_write_u32(rect_ptr + 4, y) }
-pub fn rect_set_w: (rect_ptr :i64, w :i64) { rt_write_u32(rect_ptr + 8, w) }
-pub fn rect_set_h: (rect_ptr :i64, h :i64) { rt_write_u32(rect_ptr + 12, h) }
+pub fn rect_set_x: (rect_ptr :i64, x :i64) { conv::write_u32(rect_ptr, x) }
+pub fn rect_set_y: (rect_ptr :i64, y :i64) { conv::write_u32(rect_ptr + 4, y) }
+pub fn rect_set_w: (rect_ptr :i64, w :i64) { conv::write_u32(rect_ptr + 8, w) }
+pub fn rect_set_h: (rect_ptr :i64, h :i64) { conv::write_u32(rect_ptr + 12, h) }

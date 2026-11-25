@@ -1,0 +1,159 @@
+load sdl::sdl3::haptic
+load! /tests/_support/harness
+
+@[test]
+pub fn haptic_feature_constant_success: () :bool {
+    return use! harness::check("haptic::feature_constant", haptic::feature_constant() == 0x00000001)
+}
+
+@[test]
+pub fn haptic_feature_sine_success: () :bool {
+    return use! harness::check("haptic::feature_sine", haptic::feature_sine() == 0x00000002)
+}
+
+@[test]
+pub fn haptic_feature_square_success: () :bool {
+    return use! harness::check("haptic::feature_square", haptic::feature_square() == 0x00000004)
+}
+
+@[test]
+pub fn haptic_feature_triangle_success: () :bool {
+    return use! harness::check("haptic::feature_triangle", haptic::feature_triangle() == 0x00000008)
+}
+
+@[test]
+pub fn haptic_feature_sawtooth_up_success: () :bool {
+    return use! harness::check("haptic::feature_sawtooth_up", haptic::feature_sawtooth_up() == 0x00000010)
+}
+
+@[test]
+pub fn haptic_feature_sawtooth_down_success: () :bool {
+    return use! harness::check("haptic::feature_sawtooth_down", haptic::feature_sawtooth_down() == 0x00000020)
+}
+
+@[test]
+pub fn haptic_feature_ramp_success: () :bool {
+    return use! harness::check("haptic::feature_ramp", haptic::feature_ramp() == 0x00000040)
+}
+
+@[test]
+pub fn haptic_feature_spring_success: () :bool {
+    return use! harness::check("haptic::feature_spring", haptic::feature_spring() == 0x00000080)
+}
+
+@[test]
+pub fn haptic_feature_damper_success: () :bool {
+    return use! harness::check("haptic::feature_damper", haptic::feature_damper() == 0x00000100)
+}
+
+@[test]
+pub fn haptic_feature_inertia_success: () :bool {
+    return use! harness::check("haptic::feature_inertia", haptic::feature_inertia() == 0x00000200)
+}
+
+@[test]
+pub fn haptic_feature_friction_success: () :bool {
+    return use! harness::check("haptic::feature_friction", haptic::feature_friction() == 0x00000400)
+}
+
+@[test]
+pub fn haptic_feature_leftrumble_success: () :bool {
+    return use! harness::check("haptic::feature_leftrumble", haptic::feature_leftrumble() == 0x00001000)
+}
+
+@[test]
+pub fn haptic_feature_rightrumble_success: () :bool {
+    return use! harness::check("haptic::feature_rightrumble", haptic::feature_rightrumble() == 0x00002000)
+}
+
+@[test]
+pub fn haptic_feature_cheap_amplitude_success: () :bool {
+    return use! harness::check("haptic::feature_cheap_amplitude", haptic::feature_cheap_amplitude() == 0x00004000)
+}
+
+@[test]
+pub fn haptic_feature_autocenter_success: () :bool {
+    return use! harness::check("haptic::feature_autocenter", haptic::feature_autocenter() == 0x00008000)
+}
+
+@[test]
+pub fn haptic_feature_gain_success: () :bool {
+    return use! harness::check("haptic::feature_gain", haptic::feature_gain() == 0x00010000)
+}
+
+@[test]
+pub fn haptic_feature_pause_success: () :bool {
+    return use! harness::check("haptic::feature_pause", haptic::feature_pause() == 0x00020000)
+}
+
+@[test]
+pub fn haptic_feature_axis_relative_success: () :bool {
+    return use! harness::check("haptic::feature_axis_relative", haptic::feature_axis_relative() == 0x00040000)
+}
+
+@[test]
+pub fn haptic_constants_limit: () :bool {
+    set ok = true :bool mut
+    if haptic::feature_constant() < 0 { set ok = false }
+    if haptic::feature_constant() != haptic::feature_constant() { set ok = false }
+    if haptic::feature_sine() < 0 { set ok = false }
+    if haptic::feature_sine() != haptic::feature_sine() { set ok = false }
+    if haptic::feature_square() < 0 { set ok = false }
+    if haptic::feature_square() != haptic::feature_square() { set ok = false }
+    if haptic::feature_triangle() < 0 { set ok = false }
+    if haptic::feature_triangle() != haptic::feature_triangle() { set ok = false }
+    if haptic::feature_sawtooth_up() < 0 { set ok = false }
+    if haptic::feature_sawtooth_up() != haptic::feature_sawtooth_up() { set ok = false }
+    if haptic::feature_sawtooth_down() < 0 { set ok = false }
+    if haptic::feature_sawtooth_down() != haptic::feature_sawtooth_down() { set ok = false }
+    if haptic::feature_ramp() < 0 { set ok = false }
+    if haptic::feature_ramp() != haptic::feature_ramp() { set ok = false }
+    if haptic::feature_spring() < 0 { set ok = false }
+    if haptic::feature_spring() != haptic::feature_spring() { set ok = false }
+    if haptic::feature_damper() < 0 { set ok = false }
+    if haptic::feature_damper() != haptic::feature_damper() { set ok = false }
+    if haptic::feature_inertia() < 0 { set ok = false }
+    if haptic::feature_inertia() != haptic::feature_inertia() { set ok = false }
+    if haptic::feature_friction() < 0 { set ok = false }
+    if haptic::feature_friction() != haptic::feature_friction() { set ok = false }
+    if haptic::feature_leftrumble() < 0 { set ok = false }
+    if haptic::feature_leftrumble() != haptic::feature_leftrumble() { set ok = false }
+    if haptic::feature_rightrumble() < 0 { set ok = false }
+    if haptic::feature_rightrumble() != haptic::feature_rightrumble() { set ok = false }
+    if haptic::feature_cheap_amplitude() < 0 { set ok = false }
+    if haptic::feature_cheap_amplitude() != haptic::feature_cheap_amplitude() { set ok = false }
+    if haptic::feature_autocenter() < 0 { set ok = false }
+    if haptic::feature_autocenter() != haptic::feature_autocenter() { set ok = false }
+    if haptic::feature_gain() < 0 { set ok = false }
+    if haptic::feature_gain() != haptic::feature_gain() { set ok = false }
+    if haptic::feature_pause() < 0 { set ok = false }
+    if haptic::feature_pause() != haptic::feature_pause() { set ok = false }
+    if haptic::feature_axis_relative() < 0 { set ok = false }
+    if haptic::feature_axis_relative() != haptic::feature_axis_relative() { set ok = false }
+    return use! harness::check("haptic::constants/limit", ok)
+}
+
+@[test]
+pub fn haptic_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if haptic::feature_constant() != haptic::feature_constant() { set ok = false }
+    if haptic::feature_sine() != haptic::feature_sine() { set ok = false }
+    if haptic::feature_square() != haptic::feature_square() { set ok = false }
+    if haptic::feature_triangle() != haptic::feature_triangle() { set ok = false }
+    if haptic::feature_sawtooth_up() != haptic::feature_sawtooth_up() { set ok = false }
+    if haptic::feature_sawtooth_down() != haptic::feature_sawtooth_down() { set ok = false }
+    if haptic::feature_ramp() != haptic::feature_ramp() { set ok = false }
+    if haptic::feature_spring() != haptic::feature_spring() { set ok = false }
+    if haptic::feature_damper() != haptic::feature_damper() { set ok = false }
+    if haptic::feature_inertia() != haptic::feature_inertia() { set ok = false }
+    if haptic::feature_friction() != haptic::feature_friction() { set ok = false }
+    if haptic::feature_leftrumble() != haptic::feature_leftrumble() { set ok = false }
+    if haptic::feature_rightrumble() != haptic::feature_rightrumble() { set ok = false }
+    if haptic::feature_cheap_amplitude() != haptic::feature_cheap_amplitude() { set ok = false }
+    if haptic::feature_autocenter() != haptic::feature_autocenter() { set ok = false }
+    if haptic::feature_gain() != haptic::feature_gain() { set ok = false }
+    if haptic::feature_pause() != haptic::feature_pause() { set ok = false }
+    if haptic::feature_axis_relative() != haptic::feature_axis_relative() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_haptic", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("haptic::constants/anomaly", ok)
+}

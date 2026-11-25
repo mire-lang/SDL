@@ -1,0 +1,39 @@
+load sdl::sdl2::structs
+load! /tests/_support/harness
+
+@[test]
+pub fn structs_rect_size_success: () :bool {
+    return use! harness::check("structs::rect_size", structs::rect_size() == 16)
+}
+
+@[test]
+pub fn structs_point_size_success: () :bool {
+    return use! harness::check("structs::point_size", structs::point_size() == 8)
+}
+
+@[test]
+pub fn structs_rect_invalid_success: () :bool {
+    return use! harness::check("structs::rect_invalid", structs::rect_invalid() == 0)
+}
+
+@[test]
+pub fn structs_constants_limit: () :bool {
+    set ok = true :bool mut
+    if structs::rect_size() < 0 { set ok = false }
+    if structs::rect_size() != structs::rect_size() { set ok = false }
+    if structs::point_size() < 0 { set ok = false }
+    if structs::point_size() != structs::point_size() { set ok = false }
+    if structs::rect_invalid() < 0 { set ok = false }
+    if structs::rect_invalid() != structs::rect_invalid() { set ok = false }
+    return use! harness::check("structs::constants/limit", ok)
+}
+
+@[test]
+pub fn structs_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if structs::rect_size() != structs::rect_size() { set ok = false }
+    if structs::point_size() != structs::point_size() { set ok = false }
+    if structs::rect_invalid() != structs::rect_invalid() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_structs", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("structs::constants/anomaly", ok)
+}

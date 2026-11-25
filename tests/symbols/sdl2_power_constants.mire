@@ -1,0 +1,55 @@
+load sdl::sdl2::power
+load! /tests/_support/harness
+
+@[test]
+pub fn power_state_unknown_success: () :bool {
+    return use! harness::check("power::state_unknown", power::state_unknown() == 0)
+}
+
+@[test]
+pub fn power_state_on_battery_success: () :bool {
+    return use! harness::check("power::state_on_battery", power::state_on_battery() == 1)
+}
+
+@[test]
+pub fn power_state_no_battery_success: () :bool {
+    return use! harness::check("power::state_no_battery", power::state_no_battery() == 2)
+}
+
+@[test]
+pub fn power_state_charging_success: () :bool {
+    return use! harness::check("power::state_charging", power::state_charging() == 3)
+}
+
+@[test]
+pub fn power_state_charged_success: () :bool {
+    return use! harness::check("power::state_charged", power::state_charged() == 4)
+}
+
+@[test]
+pub fn power_constants_limit: () :bool {
+    set ok = true :bool mut
+    if power::state_unknown() < 0 { set ok = false }
+    if power::state_unknown() != power::state_unknown() { set ok = false }
+    if power::state_on_battery() < 0 { set ok = false }
+    if power::state_on_battery() != power::state_on_battery() { set ok = false }
+    if power::state_no_battery() < 0 { set ok = false }
+    if power::state_no_battery() != power::state_no_battery() { set ok = false }
+    if power::state_charging() < 0 { set ok = false }
+    if power::state_charging() != power::state_charging() { set ok = false }
+    if power::state_charged() < 0 { set ok = false }
+    if power::state_charged() != power::state_charged() { set ok = false }
+    return use! harness::check("power::constants/limit", ok)
+}
+
+@[test]
+pub fn power_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if power::state_unknown() != power::state_unknown() { set ok = false }
+    if power::state_on_battery() != power::state_on_battery() { set ok = false }
+    if power::state_no_battery() != power::state_no_battery() { set ok = false }
+    if power::state_charging() != power::state_charging() { set ok = false }
+    if power::state_charged() != power::state_charged() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_power", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("power::constants/anomaly", ok)
+}

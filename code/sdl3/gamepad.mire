@@ -1,4 +1,5 @@
 module gamepad
+load sdl::sdl3::conv
 
 extern lib "SDL3"
 
@@ -41,18 +42,15 @@ extern fn SDL_AddGamepadMapping: (mapping :str) :i64 lib "SDL3"
 extern fn SDL_AddGamepadMappingsFromFile: (file :str) :i64 lib "SDL3"
 extern fn SDL_ReloadGamepadMappings: () :bool lib "SDL3"
 
-extern fn rt_alloc_raw: (size :i64) :i64 lib "c"
-extern fn rt_free_raw: (ptr :i64) lib "c"
-extern fn rt_read_u32: (ptr :i64) :i64 lib "c"
 
 pub fn has_gamepad: () :bool { return SDL_HasGamepad() }
 
 pub fn get_count: () :i64 {
-    set count_ptr = rt_alloc_raw(4)
+    set count_ptr = conv::alloc_raw(4)
     if count_ptr == 0 { return 0 }
     SDL_GetGamepads(count_ptr)
-    set count = rt_read_u32(count_ptr)
-    rt_free_raw(count_ptr)
+    set count = conv::read_u32(count_ptr)
+    conv::free_raw(count_ptr)
     return count
 }
 

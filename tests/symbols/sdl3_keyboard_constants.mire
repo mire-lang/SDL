@@ -1,0 +1,719 @@
+load sdl::sdl3::keyboard
+load! /tests/_support/harness
+
+@[test]
+pub fn keyboard_mod_none_success: () :bool {
+    return use! harness::check("keyboard::mod_none", keyboard::mod_none() == 0x0000)
+}
+
+@[test]
+pub fn keyboard_mod_left_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_left_shift", keyboard::mod_left_shift() == 0x0001)
+}
+
+@[test]
+pub fn keyboard_mod_right_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_right_shift", keyboard::mod_right_shift() == 0x0002)
+}
+
+@[test]
+pub fn keyboard_mod_left_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_left_ctrl", keyboard::mod_left_ctrl() == 0x0040)
+}
+
+@[test]
+pub fn keyboard_mod_right_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_right_ctrl", keyboard::mod_right_ctrl() == 0x0080)
+}
+
+@[test]
+pub fn keyboard_mod_left_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_left_alt", keyboard::mod_left_alt() == 0x0100)
+}
+
+@[test]
+pub fn keyboard_mod_right_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_right_alt", keyboard::mod_right_alt() == 0x0200)
+}
+
+@[test]
+pub fn keyboard_mod_shift_success: () :bool {
+    return use! harness::check("keyboard::mod_shift", keyboard::mod_shift() == 0x0003)
+}
+
+@[test]
+pub fn keyboard_mod_ctrl_success: () :bool {
+    return use! harness::check("keyboard::mod_ctrl", keyboard::mod_ctrl() == 0x00C0)
+}
+
+@[test]
+pub fn keyboard_mod_alt_success: () :bool {
+    return use! harness::check("keyboard::mod_alt", keyboard::mod_alt() == 0x0300)
+}
+
+@[test]
+pub fn keyboard_key_a_success: () :bool {
+    return use! harness::check("keyboard::key_a", keyboard::key_a() == 0x00000061)
+}
+
+@[test]
+pub fn keyboard_key_b_success: () :bool {
+    return use! harness::check("keyboard::key_b", keyboard::key_b() == 0x00000062)
+}
+
+@[test]
+pub fn keyboard_key_c_success: () :bool {
+    return use! harness::check("keyboard::key_c", keyboard::key_c() == 0x00000063)
+}
+
+@[test]
+pub fn keyboard_key_d_success: () :bool {
+    return use! harness::check("keyboard::key_d", keyboard::key_d() == 0x00000064)
+}
+
+@[test]
+pub fn keyboard_key_e_success: () :bool {
+    return use! harness::check("keyboard::key_e", keyboard::key_e() == 0x00000065)
+}
+
+@[test]
+pub fn keyboard_key_f_success: () :bool {
+    return use! harness::check("keyboard::key_f", keyboard::key_f() == 0x00000066)
+}
+
+@[test]
+pub fn keyboard_key_g_success: () :bool {
+    return use! harness::check("keyboard::key_g", keyboard::key_g() == 0x00000067)
+}
+
+@[test]
+pub fn keyboard_key_h_success: () :bool {
+    return use! harness::check("keyboard::key_h", keyboard::key_h() == 0x00000068)
+}
+
+@[test]
+pub fn keyboard_key_i_success: () :bool {
+    return use! harness::check("keyboard::key_i", keyboard::key_i() == 0x00000069)
+}
+
+@[test]
+pub fn keyboard_key_j_success: () :bool {
+    return use! harness::check("keyboard::key_j", keyboard::key_j() == 0x0000006a)
+}
+
+@[test]
+pub fn keyboard_key_k_success: () :bool {
+    return use! harness::check("keyboard::key_k", keyboard::key_k() == 0x0000006b)
+}
+
+@[test]
+pub fn keyboard_key_l_success: () :bool {
+    return use! harness::check("keyboard::key_l", keyboard::key_l() == 0x0000006c)
+}
+
+@[test]
+pub fn keyboard_key_m_success: () :bool {
+    return use! harness::check("keyboard::key_m", keyboard::key_m() == 0x0000006d)
+}
+
+@[test]
+pub fn keyboard_key_n_success: () :bool {
+    return use! harness::check("keyboard::key_n", keyboard::key_n() == 0x0000006e)
+}
+
+@[test]
+pub fn keyboard_key_o_success: () :bool {
+    return use! harness::check("keyboard::key_o", keyboard::key_o() == 0x0000006f)
+}
+
+@[test]
+pub fn keyboard_key_p_success: () :bool {
+    return use! harness::check("keyboard::key_p", keyboard::key_p() == 0x00000070)
+}
+
+@[test]
+pub fn keyboard_key_q_success: () :bool {
+    return use! harness::check("keyboard::key_q", keyboard::key_q() == 0x00000071)
+}
+
+@[test]
+pub fn keyboard_key_r_success: () :bool {
+    return use! harness::check("keyboard::key_r", keyboard::key_r() == 0x00000072)
+}
+
+@[test]
+pub fn keyboard_key_s_success: () :bool {
+    return use! harness::check("keyboard::key_s", keyboard::key_s() == 0x00000073)
+}
+
+@[test]
+pub fn keyboard_key_t_success: () :bool {
+    return use! harness::check("keyboard::key_t", keyboard::key_t() == 0x00000074)
+}
+
+@[test]
+pub fn keyboard_key_u_success: () :bool {
+    return use! harness::check("keyboard::key_u", keyboard::key_u() == 0x00000075)
+}
+
+@[test]
+pub fn keyboard_key_v_success: () :bool {
+    return use! harness::check("keyboard::key_v", keyboard::key_v() == 0x00000076)
+}
+
+@[test]
+pub fn keyboard_key_w_success: () :bool {
+    return use! harness::check("keyboard::key_w", keyboard::key_w() == 0x00000077)
+}
+
+@[test]
+pub fn keyboard_key_x_success: () :bool {
+    return use! harness::check("keyboard::key_x", keyboard::key_x() == 0x00000078)
+}
+
+@[test]
+pub fn keyboard_key_y_success: () :bool {
+    return use! harness::check("keyboard::key_y", keyboard::key_y() == 0x00000079)
+}
+
+@[test]
+pub fn keyboard_key_z_success: () :bool {
+    return use! harness::check("keyboard::key_z", keyboard::key_z() == 0x0000007a)
+}
+
+@[test]
+pub fn keyboard_key_0_success: () :bool {
+    return use! harness::check("keyboard::key_0", keyboard::key_0() == 0x00000030)
+}
+
+@[test]
+pub fn keyboard_key_1_success: () :bool {
+    return use! harness::check("keyboard::key_1", keyboard::key_1() == 0x00000031)
+}
+
+@[test]
+pub fn keyboard_key_2_success: () :bool {
+    return use! harness::check("keyboard::key_2", keyboard::key_2() == 0x00000032)
+}
+
+@[test]
+pub fn keyboard_key_3_success: () :bool {
+    return use! harness::check("keyboard::key_3", keyboard::key_3() == 0x00000033)
+}
+
+@[test]
+pub fn keyboard_key_4_success: () :bool {
+    return use! harness::check("keyboard::key_4", keyboard::key_4() == 0x00000034)
+}
+
+@[test]
+pub fn keyboard_key_5_success: () :bool {
+    return use! harness::check("keyboard::key_5", keyboard::key_5() == 0x00000035)
+}
+
+@[test]
+pub fn keyboard_key_6_success: () :bool {
+    return use! harness::check("keyboard::key_6", keyboard::key_6() == 0x00000036)
+}
+
+@[test]
+pub fn keyboard_key_7_success: () :bool {
+    return use! harness::check("keyboard::key_7", keyboard::key_7() == 0x00000037)
+}
+
+@[test]
+pub fn keyboard_key_8_success: () :bool {
+    return use! harness::check("keyboard::key_8", keyboard::key_8() == 0x00000038)
+}
+
+@[test]
+pub fn keyboard_key_9_success: () :bool {
+    return use! harness::check("keyboard::key_9", keyboard::key_9() == 0x00000039)
+}
+
+@[test]
+pub fn keyboard_key_space_success: () :bool {
+    return use! harness::check("keyboard::key_space", keyboard::key_space() == 0x00000020)
+}
+
+@[test]
+pub fn keyboard_key_return_success: () :bool {
+    return use! harness::check("keyboard::key_return", keyboard::key_return() == 0x0000000d)
+}
+
+@[test]
+pub fn keyboard_key_backspace_success: () :bool {
+    return use! harness::check("keyboard::key_backspace", keyboard::key_backspace() == 0x00000008)
+}
+
+@[test]
+pub fn keyboard_key_tab_success: () :bool {
+    return use! harness::check("keyboard::key_tab", keyboard::key_tab() == 0x00000009)
+}
+
+@[test]
+pub fn keyboard_key_escape_success: () :bool {
+    return use! harness::check("keyboard::key_escape", keyboard::key_escape() == 0x0000001b)
+}
+
+@[test]
+pub fn keyboard_key_delete_success: () :bool {
+    return use! harness::check("keyboard::key_delete", keyboard::key_delete() == 0x0000007f)
+}
+
+@[test]
+pub fn keyboard_key_backslash_success: () :bool {
+    return use! harness::check("keyboard::key_backslash", keyboard::key_backslash() == 0x0000005c)
+}
+
+@[test]
+pub fn keyboard_key_backslash_shift_success: () :bool {
+    return use! harness::check("keyboard::key_backslash_shift", keyboard::key_backslash_shift() == 0x0000007c)
+}
+
+@[test]
+pub fn keyboard_key_backspace_del_success: () :bool {
+    return use! harness::check("keyboard::key_backspace_del", keyboard::key_backspace_del() == 0x0000007f)
+}
+
+@[test]
+pub fn keyboard_key_insert_success: () :bool {
+    return use! harness::check("keyboard::key_insert", keyboard::key_insert() == 0x40000222)
+}
+
+@[test]
+pub fn keyboard_key_home_success: () :bool {
+    return use! harness::check("keyboard::key_home", keyboard::key_home() == 0x4000004a)
+}
+
+@[test]
+pub fn keyboard_key_end_success: () :bool {
+    return use! harness::check("keyboard::key_end", keyboard::key_end() == 0x4000004d)
+}
+
+@[test]
+pub fn keyboard_key_pageup_success: () :bool {
+    return use! harness::check("keyboard::key_pageup", keyboard::key_pageup() == 0x4000004b)
+}
+
+@[test]
+pub fn keyboard_key_pagedown_success: () :bool {
+    return use! harness::check("keyboard::key_pagedown", keyboard::key_pagedown() == 0x4000004e)
+}
+
+@[test]
+pub fn keyboard_key_left_success: () :bool {
+    return use! harness::check("keyboard::key_left", keyboard::key_left() == 0x40000050)
+}
+
+@[test]
+pub fn keyboard_key_right_success: () :bool {
+    return use! harness::check("keyboard::key_right", keyboard::key_right() == 0x4000004f)
+}
+
+@[test]
+pub fn keyboard_key_up_success: () :bool {
+    return use! harness::check("keyboard::key_up", keyboard::key_up() == 0x40000052)
+}
+
+@[test]
+pub fn keyboard_key_down_success: () :bool {
+    return use! harness::check("keyboard::key_down", keyboard::key_down() == 0x40000051)
+}
+
+@[test]
+pub fn keyboard_key_f1_success: () :bool {
+    return use! harness::check("keyboard::key_f1", keyboard::key_f1() == 0x4000003a)
+}
+
+@[test]
+pub fn keyboard_key_f2_success: () :bool {
+    return use! harness::check("keyboard::key_f2", keyboard::key_f2() == 0x4000003b)
+}
+
+@[test]
+pub fn keyboard_key_f3_success: () :bool {
+    return use! harness::check("keyboard::key_f3", keyboard::key_f3() == 0x4000003c)
+}
+
+@[test]
+pub fn keyboard_key_f4_success: () :bool {
+    return use! harness::check("keyboard::key_f4", keyboard::key_f4() == 0x4000003d)
+}
+
+@[test]
+pub fn keyboard_key_f5_success: () :bool {
+    return use! harness::check("keyboard::key_f5", keyboard::key_f5() == 0x4000003e)
+}
+
+@[test]
+pub fn keyboard_key_f6_success: () :bool {
+    return use! harness::check("keyboard::key_f6", keyboard::key_f6() == 0x4000003f)
+}
+
+@[test]
+pub fn keyboard_key_f7_success: () :bool {
+    return use! harness::check("keyboard::key_f7", keyboard::key_f7() == 0x40000040)
+}
+
+@[test]
+pub fn keyboard_key_f8_success: () :bool {
+    return use! harness::check("keyboard::key_f8", keyboard::key_f8() == 0x40000041)
+}
+
+@[test]
+pub fn keyboard_key_f9_success: () :bool {
+    return use! harness::check("keyboard::key_f9", keyboard::key_f9() == 0x40000042)
+}
+
+@[test]
+pub fn keyboard_key_f10_success: () :bool {
+    return use! harness::check("keyboard::key_f10", keyboard::key_f10() == 0x40000043)
+}
+
+@[test]
+pub fn keyboard_key_f11_success: () :bool {
+    return use! harness::check("keyboard::key_f11", keyboard::key_f11() == 0x40000044)
+}
+
+@[test]
+pub fn keyboard_key_f12_success: () :bool {
+    return use! harness::check("keyboard::key_f12", keyboard::key_f12() == 0x40000045)
+}
+
+@[test]
+pub fn keyboard_key_colon_success: () :bool {
+    return use! harness::check("keyboard::key_colon", keyboard::key_colon() == 0x0000003a)
+}
+
+@[test]
+pub fn keyboard_key_semicolon_success: () :bool {
+    return use! harness::check("keyboard::key_semicolon", keyboard::key_semicolon() == 0x0000003b)
+}
+
+@[test]
+pub fn keyboard_key_comma_success: () :bool {
+    return use! harness::check("keyboard::key_comma", keyboard::key_comma() == 0x0000002c)
+}
+
+@[test]
+pub fn keyboard_key_period_success: () :bool {
+    return use! harness::check("keyboard::key_period", keyboard::key_period() == 0x0000002e)
+}
+
+@[test]
+pub fn keyboard_key_slash_success: () :bool {
+    return use! harness::check("keyboard::key_slash", keyboard::key_slash() == 0x0000002f)
+}
+
+@[test]
+pub fn keyboard_key_plus_success: () :bool {
+    return use! harness::check("keyboard::key_plus", keyboard::key_plus() == 0x0000003d)
+}
+
+@[test]
+pub fn keyboard_key_minus_success: () :bool {
+    return use! harness::check("keyboard::key_minus", keyboard::key_minus() == 0x0000002d)
+}
+
+@[test]
+pub fn keyboard_key_equals_success: () :bool {
+    return use! harness::check("keyboard::key_equals", keyboard::key_equals() == 0x0000003d)
+}
+
+@[test]
+pub fn keyboard_key_leftbracket_success: () :bool {
+    return use! harness::check("keyboard::key_leftbracket", keyboard::key_leftbracket() == 0x0000005b)
+}
+
+@[test]
+pub fn keyboard_key_rightbracket_success: () :bool {
+    return use! harness::check("keyboard::key_rightbracket", keyboard::key_rightbracket() == 0x0000005d)
+}
+
+@[test]
+pub fn keyboard_key_quote_success: () :bool {
+    return use! harness::check("keyboard::key_quote", keyboard::key_quote() == 0x00000027)
+}
+
+@[test]
+pub fn keyboard_key_backquote_success: () :bool {
+    return use! harness::check("keyboard::key_backquote", keyboard::key_backquote() == 0x00000060)
+}
+
+@[test]
+pub fn keyboard_constants_limit: () :bool {
+    set ok = true :bool mut
+    if keyboard::mod_none() < 0 { set ok = false }
+    if keyboard::mod_none() != keyboard::mod_none() { set ok = false }
+    if keyboard::mod_left_shift() < 0 { set ok = false }
+    if keyboard::mod_left_shift() != keyboard::mod_left_shift() { set ok = false }
+    if keyboard::mod_right_shift() < 0 { set ok = false }
+    if keyboard::mod_right_shift() != keyboard::mod_right_shift() { set ok = false }
+    if keyboard::mod_left_ctrl() < 0 { set ok = false }
+    if keyboard::mod_left_ctrl() != keyboard::mod_left_ctrl() { set ok = false }
+    if keyboard::mod_right_ctrl() < 0 { set ok = false }
+    if keyboard::mod_right_ctrl() != keyboard::mod_right_ctrl() { set ok = false }
+    if keyboard::mod_left_alt() < 0 { set ok = false }
+    if keyboard::mod_left_alt() != keyboard::mod_left_alt() { set ok = false }
+    if keyboard::mod_right_alt() < 0 { set ok = false }
+    if keyboard::mod_right_alt() != keyboard::mod_right_alt() { set ok = false }
+    if keyboard::mod_shift() < 0 { set ok = false }
+    if keyboard::mod_shift() != keyboard::mod_shift() { set ok = false }
+    if keyboard::mod_ctrl() < 0 { set ok = false }
+    if keyboard::mod_ctrl() != keyboard::mod_ctrl() { set ok = false }
+    if keyboard::mod_alt() < 0 { set ok = false }
+    if keyboard::mod_alt() != keyboard::mod_alt() { set ok = false }
+    if keyboard::key_a() < 0 { set ok = false }
+    if keyboard::key_a() != keyboard::key_a() { set ok = false }
+    if keyboard::key_b() < 0 { set ok = false }
+    if keyboard::key_b() != keyboard::key_b() { set ok = false }
+    if keyboard::key_c() < 0 { set ok = false }
+    if keyboard::key_c() != keyboard::key_c() { set ok = false }
+    if keyboard::key_d() < 0 { set ok = false }
+    if keyboard::key_d() != keyboard::key_d() { set ok = false }
+    if keyboard::key_e() < 0 { set ok = false }
+    if keyboard::key_e() != keyboard::key_e() { set ok = false }
+    if keyboard::key_f() < 0 { set ok = false }
+    if keyboard::key_f() != keyboard::key_f() { set ok = false }
+    if keyboard::key_g() < 0 { set ok = false }
+    if keyboard::key_g() != keyboard::key_g() { set ok = false }
+    if keyboard::key_h() < 0 { set ok = false }
+    if keyboard::key_h() != keyboard::key_h() { set ok = false }
+    if keyboard::key_i() < 0 { set ok = false }
+    if keyboard::key_i() != keyboard::key_i() { set ok = false }
+    if keyboard::key_j() < 0 { set ok = false }
+    if keyboard::key_j() != keyboard::key_j() { set ok = false }
+    if keyboard::key_k() < 0 { set ok = false }
+    if keyboard::key_k() != keyboard::key_k() { set ok = false }
+    if keyboard::key_l() < 0 { set ok = false }
+    if keyboard::key_l() != keyboard::key_l() { set ok = false }
+    if keyboard::key_m() < 0 { set ok = false }
+    if keyboard::key_m() != keyboard::key_m() { set ok = false }
+    if keyboard::key_n() < 0 { set ok = false }
+    if keyboard::key_n() != keyboard::key_n() { set ok = false }
+    if keyboard::key_o() < 0 { set ok = false }
+    if keyboard::key_o() != keyboard::key_o() { set ok = false }
+    if keyboard::key_p() < 0 { set ok = false }
+    if keyboard::key_p() != keyboard::key_p() { set ok = false }
+    if keyboard::key_q() < 0 { set ok = false }
+    if keyboard::key_q() != keyboard::key_q() { set ok = false }
+    if keyboard::key_r() < 0 { set ok = false }
+    if keyboard::key_r() != keyboard::key_r() { set ok = false }
+    if keyboard::key_s() < 0 { set ok = false }
+    if keyboard::key_s() != keyboard::key_s() { set ok = false }
+    if keyboard::key_t() < 0 { set ok = false }
+    if keyboard::key_t() != keyboard::key_t() { set ok = false }
+    if keyboard::key_u() < 0 { set ok = false }
+    if keyboard::key_u() != keyboard::key_u() { set ok = false }
+    if keyboard::key_v() < 0 { set ok = false }
+    if keyboard::key_v() != keyboard::key_v() { set ok = false }
+    if keyboard::key_w() < 0 { set ok = false }
+    if keyboard::key_w() != keyboard::key_w() { set ok = false }
+    if keyboard::key_x() < 0 { set ok = false }
+    if keyboard::key_x() != keyboard::key_x() { set ok = false }
+    if keyboard::key_y() < 0 { set ok = false }
+    if keyboard::key_y() != keyboard::key_y() { set ok = false }
+    if keyboard::key_z() < 0 { set ok = false }
+    if keyboard::key_z() != keyboard::key_z() { set ok = false }
+    if keyboard::key_0() < 0 { set ok = false }
+    if keyboard::key_0() != keyboard::key_0() { set ok = false }
+    if keyboard::key_1() < 0 { set ok = false }
+    if keyboard::key_1() != keyboard::key_1() { set ok = false }
+    if keyboard::key_2() < 0 { set ok = false }
+    if keyboard::key_2() != keyboard::key_2() { set ok = false }
+    if keyboard::key_3() < 0 { set ok = false }
+    if keyboard::key_3() != keyboard::key_3() { set ok = false }
+    if keyboard::key_4() < 0 { set ok = false }
+    if keyboard::key_4() != keyboard::key_4() { set ok = false }
+    if keyboard::key_5() < 0 { set ok = false }
+    if keyboard::key_5() != keyboard::key_5() { set ok = false }
+    if keyboard::key_6() < 0 { set ok = false }
+    if keyboard::key_6() != keyboard::key_6() { set ok = false }
+    if keyboard::key_7() < 0 { set ok = false }
+    if keyboard::key_7() != keyboard::key_7() { set ok = false }
+    if keyboard::key_8() < 0 { set ok = false }
+    if keyboard::key_8() != keyboard::key_8() { set ok = false }
+    if keyboard::key_9() < 0 { set ok = false }
+    if keyboard::key_9() != keyboard::key_9() { set ok = false }
+    if keyboard::key_space() < 0 { set ok = false }
+    if keyboard::key_space() != keyboard::key_space() { set ok = false }
+    if keyboard::key_return() < 0 { set ok = false }
+    if keyboard::key_return() != keyboard::key_return() { set ok = false }
+    if keyboard::key_backspace() < 0 { set ok = false }
+    if keyboard::key_backspace() != keyboard::key_backspace() { set ok = false }
+    if keyboard::key_tab() < 0 { set ok = false }
+    if keyboard::key_tab() != keyboard::key_tab() { set ok = false }
+    if keyboard::key_escape() < 0 { set ok = false }
+    if keyboard::key_escape() != keyboard::key_escape() { set ok = false }
+    if keyboard::key_delete() < 0 { set ok = false }
+    if keyboard::key_delete() != keyboard::key_delete() { set ok = false }
+    if keyboard::key_backslash() < 0 { set ok = false }
+    if keyboard::key_backslash() != keyboard::key_backslash() { set ok = false }
+    if keyboard::key_backslash_shift() < 0 { set ok = false }
+    if keyboard::key_backslash_shift() != keyboard::key_backslash_shift() { set ok = false }
+    if keyboard::key_backspace_del() < 0 { set ok = false }
+    if keyboard::key_backspace_del() != keyboard::key_backspace_del() { set ok = false }
+    if keyboard::key_insert() < 0 { set ok = false }
+    if keyboard::key_insert() != keyboard::key_insert() { set ok = false }
+    if keyboard::key_home() < 0 { set ok = false }
+    if keyboard::key_home() != keyboard::key_home() { set ok = false }
+    if keyboard::key_end() < 0 { set ok = false }
+    if keyboard::key_end() != keyboard::key_end() { set ok = false }
+    if keyboard::key_pageup() < 0 { set ok = false }
+    if keyboard::key_pageup() != keyboard::key_pageup() { set ok = false }
+    if keyboard::key_pagedown() < 0 { set ok = false }
+    if keyboard::key_pagedown() != keyboard::key_pagedown() { set ok = false }
+    if keyboard::key_left() < 0 { set ok = false }
+    if keyboard::key_left() != keyboard::key_left() { set ok = false }
+    if keyboard::key_right() < 0 { set ok = false }
+    if keyboard::key_right() != keyboard::key_right() { set ok = false }
+    if keyboard::key_up() < 0 { set ok = false }
+    if keyboard::key_up() != keyboard::key_up() { set ok = false }
+    if keyboard::key_down() < 0 { set ok = false }
+    if keyboard::key_down() != keyboard::key_down() { set ok = false }
+    if keyboard::key_f1() < 0 { set ok = false }
+    if keyboard::key_f1() != keyboard::key_f1() { set ok = false }
+    if keyboard::key_f2() < 0 { set ok = false }
+    if keyboard::key_f2() != keyboard::key_f2() { set ok = false }
+    if keyboard::key_f3() < 0 { set ok = false }
+    if keyboard::key_f3() != keyboard::key_f3() { set ok = false }
+    if keyboard::key_f4() < 0 { set ok = false }
+    if keyboard::key_f4() != keyboard::key_f4() { set ok = false }
+    if keyboard::key_f5() < 0 { set ok = false }
+    if keyboard::key_f5() != keyboard::key_f5() { set ok = false }
+    if keyboard::key_f6() < 0 { set ok = false }
+    if keyboard::key_f6() != keyboard::key_f6() { set ok = false }
+    if keyboard::key_f7() < 0 { set ok = false }
+    if keyboard::key_f7() != keyboard::key_f7() { set ok = false }
+    if keyboard::key_f8() < 0 { set ok = false }
+    if keyboard::key_f8() != keyboard::key_f8() { set ok = false }
+    if keyboard::key_f9() < 0 { set ok = false }
+    if keyboard::key_f9() != keyboard::key_f9() { set ok = false }
+    if keyboard::key_f10() < 0 { set ok = false }
+    if keyboard::key_f10() != keyboard::key_f10() { set ok = false }
+    if keyboard::key_f11() < 0 { set ok = false }
+    if keyboard::key_f11() != keyboard::key_f11() { set ok = false }
+    if keyboard::key_f12() < 0 { set ok = false }
+    if keyboard::key_f12() != keyboard::key_f12() { set ok = false }
+    if keyboard::key_colon() < 0 { set ok = false }
+    if keyboard::key_colon() != keyboard::key_colon() { set ok = false }
+    if keyboard::key_semicolon() < 0 { set ok = false }
+    if keyboard::key_semicolon() != keyboard::key_semicolon() { set ok = false }
+    if keyboard::key_comma() < 0 { set ok = false }
+    if keyboard::key_comma() != keyboard::key_comma() { set ok = false }
+    if keyboard::key_period() < 0 { set ok = false }
+    if keyboard::key_period() != keyboard::key_period() { set ok = false }
+    if keyboard::key_slash() < 0 { set ok = false }
+    if keyboard::key_slash() != keyboard::key_slash() { set ok = false }
+    if keyboard::key_plus() < 0 { set ok = false }
+    if keyboard::key_plus() != keyboard::key_plus() { set ok = false }
+    if keyboard::key_minus() < 0 { set ok = false }
+    if keyboard::key_minus() != keyboard::key_minus() { set ok = false }
+    if keyboard::key_equals() < 0 { set ok = false }
+    if keyboard::key_equals() != keyboard::key_equals() { set ok = false }
+    if keyboard::key_leftbracket() < 0 { set ok = false }
+    if keyboard::key_leftbracket() != keyboard::key_leftbracket() { set ok = false }
+    if keyboard::key_rightbracket() < 0 { set ok = false }
+    if keyboard::key_rightbracket() != keyboard::key_rightbracket() { set ok = false }
+    if keyboard::key_quote() < 0 { set ok = false }
+    if keyboard::key_quote() != keyboard::key_quote() { set ok = false }
+    if keyboard::key_backquote() < 0 { set ok = false }
+    if keyboard::key_backquote() != keyboard::key_backquote() { set ok = false }
+    return use! harness::check("keyboard::constants/limit", ok)
+}
+
+@[test]
+pub fn keyboard_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if keyboard::mod_none() != keyboard::mod_none() { set ok = false }
+    if keyboard::mod_left_shift() != keyboard::mod_left_shift() { set ok = false }
+    if keyboard::mod_right_shift() != keyboard::mod_right_shift() { set ok = false }
+    if keyboard::mod_left_ctrl() != keyboard::mod_left_ctrl() { set ok = false }
+    if keyboard::mod_right_ctrl() != keyboard::mod_right_ctrl() { set ok = false }
+    if keyboard::mod_left_alt() != keyboard::mod_left_alt() { set ok = false }
+    if keyboard::mod_right_alt() != keyboard::mod_right_alt() { set ok = false }
+    if keyboard::mod_shift() != keyboard::mod_shift() { set ok = false }
+    if keyboard::mod_ctrl() != keyboard::mod_ctrl() { set ok = false }
+    if keyboard::mod_alt() != keyboard::mod_alt() { set ok = false }
+    if keyboard::key_a() != keyboard::key_a() { set ok = false }
+    if keyboard::key_b() != keyboard::key_b() { set ok = false }
+    if keyboard::key_c() != keyboard::key_c() { set ok = false }
+    if keyboard::key_d() != keyboard::key_d() { set ok = false }
+    if keyboard::key_e() != keyboard::key_e() { set ok = false }
+    if keyboard::key_f() != keyboard::key_f() { set ok = false }
+    if keyboard::key_g() != keyboard::key_g() { set ok = false }
+    if keyboard::key_h() != keyboard::key_h() { set ok = false }
+    if keyboard::key_i() != keyboard::key_i() { set ok = false }
+    if keyboard::key_j() != keyboard::key_j() { set ok = false }
+    if keyboard::key_k() != keyboard::key_k() { set ok = false }
+    if keyboard::key_l() != keyboard::key_l() { set ok = false }
+    if keyboard::key_m() != keyboard::key_m() { set ok = false }
+    if keyboard::key_n() != keyboard::key_n() { set ok = false }
+    if keyboard::key_o() != keyboard::key_o() { set ok = false }
+    if keyboard::key_p() != keyboard::key_p() { set ok = false }
+    if keyboard::key_q() != keyboard::key_q() { set ok = false }
+    if keyboard::key_r() != keyboard::key_r() { set ok = false }
+    if keyboard::key_s() != keyboard::key_s() { set ok = false }
+    if keyboard::key_t() != keyboard::key_t() { set ok = false }
+    if keyboard::key_u() != keyboard::key_u() { set ok = false }
+    if keyboard::key_v() != keyboard::key_v() { set ok = false }
+    if keyboard::key_w() != keyboard::key_w() { set ok = false }
+    if keyboard::key_x() != keyboard::key_x() { set ok = false }
+    if keyboard::key_y() != keyboard::key_y() { set ok = false }
+    if keyboard::key_z() != keyboard::key_z() { set ok = false }
+    if keyboard::key_0() != keyboard::key_0() { set ok = false }
+    if keyboard::key_1() != keyboard::key_1() { set ok = false }
+    if keyboard::key_2() != keyboard::key_2() { set ok = false }
+    if keyboard::key_3() != keyboard::key_3() { set ok = false }
+    if keyboard::key_4() != keyboard::key_4() { set ok = false }
+    if keyboard::key_5() != keyboard::key_5() { set ok = false }
+    if keyboard::key_6() != keyboard::key_6() { set ok = false }
+    if keyboard::key_7() != keyboard::key_7() { set ok = false }
+    if keyboard::key_8() != keyboard::key_8() { set ok = false }
+    if keyboard::key_9() != keyboard::key_9() { set ok = false }
+    if keyboard::key_space() != keyboard::key_space() { set ok = false }
+    if keyboard::key_return() != keyboard::key_return() { set ok = false }
+    if keyboard::key_backspace() != keyboard::key_backspace() { set ok = false }
+    if keyboard::key_tab() != keyboard::key_tab() { set ok = false }
+    if keyboard::key_escape() != keyboard::key_escape() { set ok = false }
+    if keyboard::key_delete() != keyboard::key_delete() { set ok = false }
+    if keyboard::key_backslash() != keyboard::key_backslash() { set ok = false }
+    if keyboard::key_backslash_shift() != keyboard::key_backslash_shift() { set ok = false }
+    if keyboard::key_backspace_del() != keyboard::key_backspace_del() { set ok = false }
+    if keyboard::key_insert() != keyboard::key_insert() { set ok = false }
+    if keyboard::key_home() != keyboard::key_home() { set ok = false }
+    if keyboard::key_end() != keyboard::key_end() { set ok = false }
+    if keyboard::key_pageup() != keyboard::key_pageup() { set ok = false }
+    if keyboard::key_pagedown() != keyboard::key_pagedown() { set ok = false }
+    if keyboard::key_left() != keyboard::key_left() { set ok = false }
+    if keyboard::key_right() != keyboard::key_right() { set ok = false }
+    if keyboard::key_up() != keyboard::key_up() { set ok = false }
+    if keyboard::key_down() != keyboard::key_down() { set ok = false }
+    if keyboard::key_f1() != keyboard::key_f1() { set ok = false }
+    if keyboard::key_f2() != keyboard::key_f2() { set ok = false }
+    if keyboard::key_f3() != keyboard::key_f3() { set ok = false }
+    if keyboard::key_f4() != keyboard::key_f4() { set ok = false }
+    if keyboard::key_f5() != keyboard::key_f5() { set ok = false }
+    if keyboard::key_f6() != keyboard::key_f6() { set ok = false }
+    if keyboard::key_f7() != keyboard::key_f7() { set ok = false }
+    if keyboard::key_f8() != keyboard::key_f8() { set ok = false }
+    if keyboard::key_f9() != keyboard::key_f9() { set ok = false }
+    if keyboard::key_f10() != keyboard::key_f10() { set ok = false }
+    if keyboard::key_f11() != keyboard::key_f11() { set ok = false }
+    if keyboard::key_f12() != keyboard::key_f12() { set ok = false }
+    if keyboard::key_colon() != keyboard::key_colon() { set ok = false }
+    if keyboard::key_semicolon() != keyboard::key_semicolon() { set ok = false }
+    if keyboard::key_comma() != keyboard::key_comma() { set ok = false }
+    if keyboard::key_period() != keyboard::key_period() { set ok = false }
+    if keyboard::key_slash() != keyboard::key_slash() { set ok = false }
+    if keyboard::key_plus() != keyboard::key_plus() { set ok = false }
+    if keyboard::key_minus() != keyboard::key_minus() { set ok = false }
+    if keyboard::key_equals() != keyboard::key_equals() { set ok = false }
+    if keyboard::key_leftbracket() != keyboard::key_leftbracket() { set ok = false }
+    if keyboard::key_rightbracket() != keyboard::key_rightbracket() { set ok = false }
+    if keyboard::key_quote() != keyboard::key_quote() { set ok = false }
+    if keyboard::key_backquote() != keyboard::key_backquote() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_keyboard", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("keyboard::constants/anomaly", ok)
+}

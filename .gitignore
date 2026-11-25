@@ -1,3 +1,9 @@
 bin/
 bin_old/
 tests/log/
+tests/*/logs/*
+!tests/*/logs/.gitkeep
+tests/symbols/*/logs/*
+!tests/symbols/*/logs/.gitkeep
+tests/*/fixtures/tmp/
+tests/symbols/*/fixtures/tmp/

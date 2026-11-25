@@ -1,0 +1,87 @@
+load sdl::sdl3
+load! /tests/_support/harness
+
+@[test]
+pub fn init_init_timer_success: () :bool {
+    return use! harness::check("sdl3::init_timer", sdl3::init_timer() == 0x00000001)
+}
+
+@[test]
+pub fn init_init_audio_success: () :bool {
+    return use! harness::check("sdl3::init_audio", sdl3::init_audio() == 0x00000010)
+}
+
+@[test]
+pub fn init_init_video_success: () :bool {
+    return use! harness::check("sdl3::init_video", sdl3::init_video() == 0x00000020)
+}
+
+@[test]
+pub fn init_init_joystick_success: () :bool {
+    return use! harness::check("sdl3::init_joystick", sdl3::init_joystick() == 0x00000200)
+}
+
+@[test]
+pub fn init_init_gamepad_success: () :bool {
+    return use! harness::check("sdl3::init_gamepad", sdl3::init_gamepad() == 0x00002000)
+}
+
+@[test]
+pub fn init_init_events_success: () :bool {
+    return use! harness::check("sdl3::init_events", sdl3::init_events() == 0x00004000)
+}
+
+@[test]
+pub fn init_init_sensor_success: () :bool {
+    return use! harness::check("sdl3::init_sensor", sdl3::init_sensor() == 0x00008000)
+}
+
+@[test]
+pub fn init_init_camera_success: () :bool {
+    return use! harness::check("sdl3::init_camera", sdl3::init_camera() == 0x00010000)
+}
+
+@[test]
+pub fn init_init_everything_success: () :bool {
+    return use! harness::check("sdl3::init_everything", sdl3::init_everything() == 0x0000003F)
+}
+
+@[test]
+pub fn init_constants_limit: () :bool {
+    set ok = true :bool mut
+    if sdl3::init_timer() < 0 { set ok = false }
+    if sdl3::init_timer() != sdl3::init_timer() { set ok = false }
+    if sdl3::init_audio() < 0 { set ok = false }
+    if sdl3::init_audio() != sdl3::init_audio() { set ok = false }
+    if sdl3::init_video() < 0 { set ok = false }
+    if sdl3::init_video() != sdl3::init_video() { set ok = false }
+    if sdl3::init_joystick() < 0 { set ok = false }
+    if sdl3::init_joystick() != sdl3::init_joystick() { set ok = false }
+    if sdl3::init_gamepad() < 0 { set ok = false }
+    if sdl3::init_gamepad() != sdl3::init_gamepad() { set ok = false }
+    if sdl3::init_events() < 0 { set ok = false }
+    if sdl3::init_events() != sdl3::init_events() { set ok = false }
+    if sdl3::init_sensor() < 0 { set ok = false }
+    if sdl3::init_sensor() != sdl3::init_sensor() { set ok = false }
+    if sdl3::init_camera() < 0 { set ok = false }
+    if sdl3::init_camera() != sdl3::init_camera() { set ok = false }
+    if sdl3::init_everything() < 0 { set ok = false }
+    if sdl3::init_everything() != sdl3::init_everything() { set ok = false }
+    return use! harness::check("sdl3::constants/limit", ok)
+}
+
+@[test]
+pub fn init_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if sdl3::init_timer() != sdl3::init_timer() { set ok = false }
+    if sdl3::init_audio() != sdl3::init_audio() { set ok = false }
+    if sdl3::init_video() != sdl3::init_video() { set ok = false }
+    if sdl3::init_joystick() != sdl3::init_joystick() { set ok = false }
+    if sdl3::init_gamepad() != sdl3::init_gamepad() { set ok = false }
+    if sdl3::init_events() != sdl3::init_events() { set ok = false }
+    if sdl3::init_sensor() != sdl3::init_sensor() { set ok = false }
+    if sdl3::init_camera() != sdl3::init_camera() { set ok = false }
+    if sdl3::init_everything() != sdl3::init_everything() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_init", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("sdl3::constants/anomaly", ok)
+}

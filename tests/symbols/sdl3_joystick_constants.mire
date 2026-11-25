@@ -1,0 +1,111 @@
+load sdl::sdl3::joystick
+load! /tests/_support/harness
+
+@[test]
+pub fn joystick_type_unknown_success: () :bool {
+    return use! harness::check("joystick::type_unknown", joystick::type_unknown() == 0)
+}
+
+@[test]
+pub fn joystick_type_gamepad_success: () :bool {
+    return use! harness::check("joystick::type_gamepad", joystick::type_gamepad() == 1)
+}
+
+@[test]
+pub fn joystick_type_wheel_success: () :bool {
+    return use! harness::check("joystick::type_wheel", joystick::type_wheel() == 2)
+}
+
+@[test]
+pub fn joystick_type_arctStick_success: () :bool {
+    return use! harness::check("joystick::type_arctStick", joystick::type_arctStick() == 3)
+}
+
+@[test]
+pub fn joystick_type_flightStick_success: () :bool {
+    return use! harness::check("joystick::type_flightStick", joystick::type_flightStick() == 4)
+}
+
+@[test]
+pub fn joystick_type_dancePad_success: () :bool {
+    return use! harness::check("joystick::type_dancePad", joystick::type_dancePad() == 5)
+}
+
+@[test]
+pub fn joystick_type_guitar_success: () :bool {
+    return use! harness::check("joystick::type_guitar", joystick::type_guitar() == 6)
+}
+
+@[test]
+pub fn joystick_type_drumKit_success: () :bool {
+    return use! harness::check("joystick::type_drumKit", joystick::type_drumKit() == 7)
+}
+
+@[test]
+pub fn joystick_type_dancePadAlternate_success: () :bool {
+    return use! harness::check("joystick::type_dancePadAlternate", joystick::type_dancePadAlternate() == 8)
+}
+
+@[test]
+pub fn joystick_type_guitarAlternate_success: () :bool {
+    return use! harness::check("joystick::type_guitarAlternate", joystick::type_guitarAlternate() == 9)
+}
+
+@[test]
+pub fn joystick_type_ddrum_success: () :bool {
+    return use! harness::check("joystick::type_ddrum", joystick::type_ddrum() == 10)
+}
+
+@[test]
+pub fn joystick_type_arcadePad_success: () :bool {
+    return use! harness::check("joystick::type_arcadePad", joystick::type_arcadePad() == 11)
+}
+
+@[test]
+pub fn joystick_constants_limit: () :bool {
+    set ok = true :bool mut
+    if joystick::type_unknown() < 0 { set ok = false }
+    if joystick::type_unknown() != joystick::type_unknown() { set ok = false }
+    if joystick::type_gamepad() < 0 { set ok = false }
+    if joystick::type_gamepad() != joystick::type_gamepad() { set ok = false }
+    if joystick::type_wheel() < 0 { set ok = false }
+    if joystick::type_wheel() != joystick::type_wheel() { set ok = false }
+    if joystick::type_arctStick() < 0 { set ok = false }
+    if joystick::type_arctStick() != joystick::type_arctStick() { set ok = false }
+    if joystick::type_flightStick() < 0 { set ok = false }
+    if joystick::type_flightStick() != joystick::type_flightStick() { set ok = false }
+    if joystick::type_dancePad() < 0 { set ok = false }
+    if joystick::type_dancePad() != joystick::type_dancePad() { set ok = false }
+    if joystick::type_guitar() < 0 { set ok = false }
+    if joystick::type_guitar() != joystick::type_guitar() { set ok = false }
+    if joystick::type_drumKit() < 0 { set ok = false }
+    if joystick::type_drumKit() != joystick::type_drumKit() { set ok = false }
+    if joystick::type_dancePadAlternate() < 0 { set ok = false }
+    if joystick::type_dancePadAlternate() != joystick::type_dancePadAlternate() { set ok = false }
+    if joystick::type_guitarAlternate() < 0 { set ok = false }
+    if joystick::type_guitarAlternate() != joystick::type_guitarAlternate() { set ok = false }
+    if joystick::type_ddrum() < 0 { set ok = false }
+    if joystick::type_ddrum() != joystick::type_ddrum() { set ok = false }
+    if joystick::type_arcadePad() < 0 { set ok = false }
+    if joystick::type_arcadePad() != joystick::type_arcadePad() { set ok = false }
+    return use! harness::check("joystick::constants/limit", ok)
+}
+
+@[test]
+pub fn joystick_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if joystick::type_unknown() != joystick::type_unknown() { set ok = false }
+    if joystick::type_gamepad() != joystick::type_gamepad() { set ok = false }
+    if joystick::type_wheel() != joystick::type_wheel() { set ok = false }
+    if joystick::type_arctStick() != joystick::type_arctStick() { set ok = false }
+    if joystick::type_flightStick() != joystick::type_flightStick() { set ok = false }
+    if joystick::type_dancePad() != joystick::type_dancePad() { set ok = false }
+    if joystick::type_guitar() != joystick::type_guitar() { set ok = false }
+    if joystick::type_drumKit() != joystick::type_drumKit() { set ok = false }
+    if joystick::type_dancePadAlternate() != joystick::type_dancePadAlternate() { set ok = false }
+    if joystick::type_guitarAlternate() != joystick::type_guitarAlternate() { set ok = false }
+    if joystick::type_ddrum() != joystick::type_ddrum() { set ok = false }
+    if joystick::type_arcadePad() != joystick::type_arcadePad() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_joystick", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("joystick::constants/anomaly", ok)
+}

@@ -1,0 +1,71 @@
+load sdl::sdl3::sensor
+load! /tests/_support/harness
+
+@[test]
+pub fn sensor_type_unknown_success: () :bool {
+    return use! harness::check("sensor::type_unknown", sensor::type_unknown() == 0)
+}
+
+@[test]
+pub fn sensor_type_accelerometer_success: () :bool {
+    return use! harness::check("sensor::type_accelerometer", sensor::type_accelerometer() == 1)
+}
+
+@[test]
+pub fn sensor_type_gyroscope_success: () :bool {
+    return use! harness::check("sensor::type_gyroscope", sensor::type_gyroscope() == 2)
+}
+
+@[test]
+pub fn sensor_type_accelerometer_left_success: () :bool {
+    return use! harness::check("sensor::type_accelerometer_left", sensor::type_accelerometer_left() == 3)
+}
+
+@[test]
+pub fn sensor_type_gyroscope_left_success: () :bool {
+    return use! harness::check("sensor::type_gyroscope_left", sensor::type_gyroscope_left() == 4)
+}
+
+@[test]
+pub fn sensor_type_accelerometer_right_success: () :bool {
+    return use! harness::check("sensor::type_accelerometer_right", sensor::type_accelerometer_right() == 5)
+}
+
+@[test]
+pub fn sensor_type_gyroscope_right_success: () :bool {
+    return use! harness::check("sensor::type_gyroscope_right", sensor::type_gyroscope_right() == 6)
+}
+
+@[test]
+pub fn sensor_constants_limit: () :bool {
+    set ok = true :bool mut
+    if sensor::type_unknown() < 0 { set ok = false }
+    if sensor::type_unknown() != sensor::type_unknown() { set ok = false }
+    if sensor::type_accelerometer() < 0 { set ok = false }
+    if sensor::type_accelerometer() != sensor::type_accelerometer() { set ok = false }
+    if sensor::type_gyroscope() < 0 { set ok = false }
+    if sensor::type_gyroscope() != sensor::type_gyroscope() { set ok = false }
+    if sensor::type_accelerometer_left() < 0 { set ok = false }
+    if sensor::type_accelerometer_left() != sensor::type_accelerometer_left() { set ok = false }
+    if sensor::type_gyroscope_left() < 0 { set ok = false }
+    if sensor::type_gyroscope_left() != sensor::type_gyroscope_left() { set ok = false }
+    if sensor::type_accelerometer_right() < 0 { set ok = false }
+    if sensor::type_accelerometer_right() != sensor::type_accelerometer_right() { set ok = false }
+    if sensor::type_gyroscope_right() < 0 { set ok = false }
+    if sensor::type_gyroscope_right() != sensor::type_gyroscope_right() { set ok = false }
+    return use! harness::check("sensor::constants/limit", ok)
+}
+
+@[test]
+pub fn sensor_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if sensor::type_unknown() != sensor::type_unknown() { set ok = false }
+    if sensor::type_accelerometer() != sensor::type_accelerometer() { set ok = false }
+    if sensor::type_gyroscope() != sensor::type_gyroscope() { set ok = false }
+    if sensor::type_accelerometer_left() != sensor::type_accelerometer_left() { set ok = false }
+    if sensor::type_gyroscope_left() != sensor::type_gyroscope_left() { set ok = false }
+    if sensor::type_accelerometer_right() != sensor::type_accelerometer_right() { set ok = false }
+    if sensor::type_gyroscope_right() != sensor::type_gyroscope_right() { set ok = false }
+    use! harness::anomaly("symbols/sdl3_sensor", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("sensor::constants/anomaly", ok)
+}

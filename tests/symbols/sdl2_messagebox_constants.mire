@@ -1,0 +1,39 @@
+load sdl::sdl2::messagebox
+load! /tests/_support/harness
+
+@[test]
+pub fn messagebox_flag_error_success: () :bool {
+    return use! harness::check("messagebox::flag_error", messagebox::flag_error() == 0x00000010)
+}
+
+@[test]
+pub fn messagebox_flag_warning_success: () :bool {
+    return use! harness::check("messagebox::flag_warning", messagebox::flag_warning() == 0x00000020)
+}
+
+@[test]
+pub fn messagebox_flag_information_success: () :bool {
+    return use! harness::check("messagebox::flag_information", messagebox::flag_information() == 0x00000040)
+}
+
+@[test]
+pub fn messagebox_constants_limit: () :bool {
+    set ok = true :bool mut
+    if messagebox::flag_error() < 0 { set ok = false }
+    if messagebox::flag_error() != messagebox::flag_error() { set ok = false }
+    if messagebox::flag_warning() < 0 { set ok = false }
+    if messagebox::flag_warning() != messagebox::flag_warning() { set ok = false }
+    if messagebox::flag_information() < 0 { set ok = false }
+    if messagebox::flag_information() != messagebox::flag_information() { set ok = false }
+    return use! harness::check("messagebox::constants/limit", ok)
+}
+
+@[test]
+pub fn messagebox_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if messagebox::flag_error() != messagebox::flag_error() { set ok = false }
+    if messagebox::flag_warning() != messagebox::flag_warning() { set ok = false }
+    if messagebox::flag_information() != messagebox::flag_information() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_messagebox", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("messagebox::constants/anomaly", ok)
+}

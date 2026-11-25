@@ -1,0 +1,271 @@
+load sdl::sdl2::events
+load! /tests/_support/harness
+
+@[test]
+pub fn events_event_type_quit_success: () :bool {
+    return use! harness::check("events::event_type_quit", events::event_type_quit() == 0x100)
+}
+
+@[test]
+pub fn events_event_type_window_event_success: () :bool {
+    return use! harness::check("events::event_type_window_event", events::event_type_window_event() == 0x200)
+}
+
+@[test]
+pub fn events_event_type_key_down_success: () :bool {
+    return use! harness::check("events::event_type_key_down", events::event_type_key_down() == 0x300)
+}
+
+@[test]
+pub fn events_event_type_key_up_success: () :bool {
+    return use! harness::check("events::event_type_key_up", events::event_type_key_up() == 0x301)
+}
+
+@[test]
+pub fn events_event_type_text_input_success: () :bool {
+    return use! harness::check("events::event_type_text_input", events::event_type_text_input() == 0x303)
+}
+
+@[test]
+pub fn events_event_type_mouse_motion_success: () :bool {
+    return use! harness::check("events::event_type_mouse_motion", events::event_type_mouse_motion() == 0x400)
+}
+
+@[test]
+pub fn events_event_type_mouse_button_down_success: () :bool {
+    return use! harness::check("events::event_type_mouse_button_down", events::event_type_mouse_button_down() == 0x401)
+}
+
+@[test]
+pub fn events_event_type_mouse_button_up_success: () :bool {
+    return use! harness::check("events::event_type_mouse_button_up", events::event_type_mouse_button_up() == 0x402)
+}
+
+@[test]
+pub fn events_event_type_mouse_wheel_success: () :bool {
+    return use! harness::check("events::event_type_mouse_wheel", events::event_type_mouse_wheel() == 0x403)
+}
+
+@[test]
+pub fn events_event_type_clipboard_update_success: () :bool {
+    return use! harness::check("events::event_type_clipboard_update", events::event_type_clipboard_update() == 0x600)
+}
+
+@[test]
+pub fn events_event_type_drop_file_success: () :bool {
+    return use! harness::check("events::event_type_drop_file", events::event_type_drop_file() == 0x700)
+}
+
+@[test]
+pub fn events_event_type_drop_text_success: () :bool {
+    return use! harness::check("events::event_type_drop_text", events::event_type_drop_text() == 0x701)
+}
+
+@[test]
+pub fn events_event_type_audio_device_added_success: () :bool {
+    return use! harness::check("events::event_type_audio_device_added", events::event_type_audio_device_added() == 0x800)
+}
+
+@[test]
+pub fn events_event_type_audio_device_removed_success: () :bool {
+    return use! harness::check("events::event_type_audio_device_removed", events::event_type_audio_device_removed() == 0x801)
+}
+
+@[test]
+pub fn events_event_type_user_event_success: () :bool {
+    return use! harness::check("events::event_type_user_event", events::event_type_user_event() == 0x8000)
+}
+
+@[test]
+pub fn events_window_event_shown_success: () :bool {
+    return use! harness::check("events::window_event_shown", events::window_event_shown() == 1)
+}
+
+@[test]
+pub fn events_window_event_hidden_success: () :bool {
+    return use! harness::check("events::window_event_hidden", events::window_event_hidden() == 2)
+}
+
+@[test]
+pub fn events_window_event_exposed_success: () :bool {
+    return use! harness::check("events::window_event_exposed", events::window_event_exposed() == 3)
+}
+
+@[test]
+pub fn events_window_event_moved_success: () :bool {
+    return use! harness::check("events::window_event_moved", events::window_event_moved() == 4)
+}
+
+@[test]
+pub fn events_window_event_resized_success: () :bool {
+    return use! harness::check("events::window_event_resized", events::window_event_resized() == 5)
+}
+
+@[test]
+pub fn events_window_event_minimized_success: () :bool {
+    return use! harness::check("events::window_event_minimized", events::window_event_minimized() == 6)
+}
+
+@[test]
+pub fn events_window_event_maximized_success: () :bool {
+    return use! harness::check("events::window_event_maximized", events::window_event_maximized() == 7)
+}
+
+@[test]
+pub fn events_window_event_restored_success: () :bool {
+    return use! harness::check("events::window_event_restored", events::window_event_restored() == 8)
+}
+
+@[test]
+pub fn events_window_event_mouse_enter_success: () :bool {
+    return use! harness::check("events::window_event_mouse_enter", events::window_event_mouse_enter() == 9)
+}
+
+@[test]
+pub fn events_window_event_mouse_leave_success: () :bool {
+    return use! harness::check("events::window_event_mouse_leave", events::window_event_mouse_leave() == 10)
+}
+
+@[test]
+pub fn events_window_event_focus_gained_success: () :bool {
+    return use! harness::check("events::window_event_focus_gained", events::window_event_focus_gained() == 11)
+}
+
+@[test]
+pub fn events_window_event_focus_lost_success: () :bool {
+    return use! harness::check("events::window_event_focus_lost", events::window_event_focus_lost() == 12)
+}
+
+@[test]
+pub fn events_window_event_close_success: () :bool {
+    return use! harness::check("events::window_event_close", events::window_event_close() == 13)
+}
+
+@[test]
+pub fn events_window_event_take_focus_success: () :bool {
+    return use! harness::check("events::window_event_take_focus", events::window_event_take_focus() == 14)
+}
+
+@[test]
+pub fn events_window_event_hit_test_success: () :bool {
+    return use! harness::check("events::window_event_hit_test", events::window_event_hit_test() == 15)
+}
+
+@[test]
+pub fn events_window_event_iccp_changed_success: () :bool {
+    return use! harness::check("events::window_event_iccp_changed", events::window_event_iccp_changed() == 16)
+}
+
+@[test]
+pub fn events_window_event_display_changed_success: () :bool {
+    return use! harness::check("events::window_event_display_changed", events::window_event_display_changed() == 17)
+}
+
+@[test]
+pub fn events_constants_limit: () :bool {
+    set ok = true :bool mut
+    if events::event_type_quit() < 0 { set ok = false }
+    if events::event_type_quit() != events::event_type_quit() { set ok = false }
+    if events::event_type_window_event() < 0 { set ok = false }
+    if events::event_type_window_event() != events::event_type_window_event() { set ok = false }
+    if events::event_type_key_down() < 0 { set ok = false }
+    if events::event_type_key_down() != events::event_type_key_down() { set ok = false }
+    if events::event_type_key_up() < 0 { set ok = false }
+    if events::event_type_key_up() != events::event_type_key_up() { set ok = false }
+    if events::event_type_text_input() < 0 { set ok = false }
+    if events::event_type_text_input() != events::event_type_text_input() { set ok = false }
+    if events::event_type_mouse_motion() < 0 { set ok = false }
+    if events::event_type_mouse_motion() != events::event_type_mouse_motion() { set ok = false }
+    if events::event_type_mouse_button_down() < 0 { set ok = false }
+    if events::event_type_mouse_button_down() != events::event_type_mouse_button_down() { set ok = false }
+    if events::event_type_mouse_button_up() < 0 { set ok = false }
+    if events::event_type_mouse_button_up() != events::event_type_mouse_button_up() { set ok = false }
+    if events::event_type_mouse_wheel() < 0 { set ok = false }
+    if events::event_type_mouse_wheel() != events::event_type_mouse_wheel() { set ok = false }
+    if events::event_type_clipboard_update() < 0 { set ok = false }
+    if events::event_type_clipboard_update() != events::event_type_clipboard_update() { set ok = false }
+    if events::event_type_drop_file() < 0 { set ok = false }
+    if events::event_type_drop_file() != events::event_type_drop_file() { set ok = false }
+    if events::event_type_drop_text() < 0 { set ok = false }
+    if events::event_type_drop_text() != events::event_type_drop_text() { set ok = false }
+    if events::event_type_audio_device_added() < 0 { set ok = false }
+    if events::event_type_audio_device_added() != events::event_type_audio_device_added() { set ok = false }
+    if events::event_type_audio_device_removed() < 0 { set ok = false }
+    if events::event_type_audio_device_removed() != events::event_type_audio_device_removed() { set ok = false }
+    if events::event_type_user_event() < 0 { set ok = false }
+    if events::event_type_user_event() != events::event_type_user_event() { set ok = false }
+    if events::window_event_shown() < 0 { set ok = false }
+    if events::window_event_shown() != events::window_event_shown() { set ok = false }
+    if events::window_event_hidden() < 0 { set ok = false }
+    if events::window_event_hidden() != events::window_event_hidden() { set ok = false }
+    if events::window_event_exposed() < 0 { set ok = false }
+    if events::window_event_exposed() != events::window_event_exposed() { set ok = false }
+    if events::window_event_moved() < 0 { set ok = false }
+    if events::window_event_moved() != events::window_event_moved() { set ok = false }
+    if events::window_event_resized() < 0 { set ok = false }
+    if events::window_event_resized() != events::window_event_resized() { set ok = false }
+    if events::window_event_minimized() < 0 { set ok = false }
+    if events::window_event_minimized() != events::window_event_minimized() { set ok = false }
+    if events::window_event_maximized() < 0 { set ok = false }
+    if events::window_event_maximized() != events::window_event_maximized() { set ok = false }
+    if events::window_event_restored() < 0 { set ok = false }
+    if events::window_event_restored() != events::window_event_restored() { set ok = false }
+    if events::window_event_mouse_enter() < 0 { set ok = false }
+    if events::window_event_mouse_enter() != events::window_event_mouse_enter() { set ok = false }
+    if events::window_event_mouse_leave() < 0 { set ok = false }
+    if events::window_event_mouse_leave() != events::window_event_mouse_leave() { set ok = false }
+    if events::window_event_focus_gained() < 0 { set ok = false }
+    if events::window_event_focus_gained() != events::window_event_focus_gained() { set ok = false }
+    if events::window_event_focus_lost() < 0 { set ok = false }
+    if events::window_event_focus_lost() != events::window_event_focus_lost() { set ok = false }
+    if events::window_event_close() < 0 { set ok = false }
+    if events::window_event_close() != events::window_event_close() { set ok = false }
+    if events::window_event_take_focus() < 0 { set ok = false }
+    if events::window_event_take_focus() != events::window_event_take_focus() { set ok = false }
+    if events::window_event_hit_test() < 0 { set ok = false }
+    if events::window_event_hit_test() != events::window_event_hit_test() { set ok = false }
+    if events::window_event_iccp_changed() < 0 { set ok = false }
+    if events::window_event_iccp_changed() != events::window_event_iccp_changed() { set ok = false }
+    if events::window_event_display_changed() < 0 { set ok = false }
+    if events::window_event_display_changed() != events::window_event_display_changed() { set ok = false }
+    return use! harness::check("events::constants/limit", ok)
+}
+
+@[test]
+pub fn events_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if events::event_type_quit() != events::event_type_quit() { set ok = false }
+    if events::event_type_window_event() != events::event_type_window_event() { set ok = false }
+    if events::event_type_key_down() != events::event_type_key_down() { set ok = false }
+    if events::event_type_key_up() != events::event_type_key_up() { set ok = false }
+    if events::event_type_text_input() != events::event_type_text_input() { set ok = false }
+    if events::event_type_mouse_motion() != events::event_type_mouse_motion() { set ok = false }
+    if events::event_type_mouse_button_down() != events::event_type_mouse_button_down() { set ok = false }
+    if events::event_type_mouse_button_up() != events::event_type_mouse_button_up() { set ok = false }
+    if events::event_type_mouse_wheel() != events::event_type_mouse_wheel() { set ok = false }
+    if events::event_type_clipboard_update() != events::event_type_clipboard_update() { set ok = false }
+    if events::event_type_drop_file() != events::event_type_drop_file() { set ok = false }
+    if events::event_type_drop_text() != events::event_type_drop_text() { set ok = false }
+    if events::event_type_audio_device_added() != events::event_type_audio_device_added() { set ok = false }
+    if events::event_type_audio_device_removed() != events::event_type_audio_device_removed() { set ok = false }
+    if events::event_type_user_event() != events::event_type_user_event() { set ok = false }
+    if events::window_event_shown() != events::window_event_shown() { set ok = false }
+    if events::window_event_hidden() != events::window_event_hidden() { set ok = false }
+    if events::window_event_exposed() != events::window_event_exposed() { set ok = false }
+    if events::window_event_moved() != events::window_event_moved() { set ok = false }
+    if events::window_event_resized() != events::window_event_resized() { set ok = false }
+    if events::window_event_minimized() != events::window_event_minimized() { set ok = false }
+    if events::window_event_maximized() != events::window_event_maximized() { set ok = false }
+    if events::window_event_restored() != events::window_event_restored() { set ok = false }
+    if events::window_event_mouse_enter() != events::window_event_mouse_enter() { set ok = false }
+    if events::window_event_mouse_leave() != events::window_event_mouse_leave() { set ok = false }
+    if events::window_event_focus_gained() != events::window_event_focus_gained() { set ok = false }
+    if events::window_event_focus_lost() != events::window_event_focus_lost() { set ok = false }
+    if events::window_event_close() != events::window_event_close() { set ok = false }
+    if events::window_event_take_focus() != events::window_event_take_focus() { set ok = false }
+    if events::window_event_hit_test() != events::window_event_hit_test() { set ok = false }
+    if events::window_event_iccp_changed() != events::window_event_iccp_changed() { set ok = false }
+    if events::window_event_display_changed() != events::window_event_display_changed() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_events", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("events::constants/anomaly", ok)
+}

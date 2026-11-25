@@ -1,8 +1,9 @@
 load kioto
 load sdl::sdl3
+load sdl::sdl3::conv
 
 pub fn make_event_buf: () :i64 {
-    return rt_alloc_raw(128)
+    return conv::alloc_raw(128)
 }
 
 @[test]
@@ -66,8 +67,8 @@ pub fn test_event_type_constants: () :bool {
 pub fn test_event_field_readers: () :bool {
     set buf = make_event_buf()
     set type_val = 0x300 :i64
-    rt_write_i32(buf, type_val)
-    set read_back = rt_read_i32(buf)
+    conv::write_u32(buf, type_val)
+    set read_back = conv::read_u32(buf)
     return read_back == type_val
 }
 
@@ -75,17 +76,17 @@ pub fn test_event_field_readers: () :bool {
 pub fn test_event_field_readers_u32: () :bool {
     set buf = make_event_buf()
     set val = 0xDEADBEEF :i64
-    rt_write_i32(buf, val)
-    set read_back = rt_read_u32(buf)
+    conv::write_u32(buf, val)
+    set read_back = conv::read_u32(buf)
     return read_back == val
 }
 
 @[test]
 pub fn test_event_field_readers_u16: () :bool {
     set buf = make_event_buf()
-    rt_write_i32(buf, 0x00004000)
-    set et = rt_read_u16(buf)
-    set ws = rt_read_u16(buf + 2)
+    conv::write_u32(buf, 0x00004000)
+    set et = conv::read_u16(buf)
+    set ws = conv::read_u16(buf + 2)
     return et == 0x4000 && ws == 0
 }
 
@@ -115,9 +116,9 @@ pub fn test_color_creation: () :bool {
 pub fn test_vertex_creation: () :bool {
     set v = render::create_vertex(10.0, 20.0, 1.0, 0.0, 0.0, 1.0, 0.5, 0.5)
     if v == 0 { return false }
-    set vx = rt_read_f32(v)
-    set vy = rt_read_f32(v + 4)
-    rt_free_raw(v)
+    set vx = structs::read_f32(v, 0)
+    set vy = structs::read_f32(v, 4)
+    conv::free_raw(v)
     return vx == 10.0 && vy == 20.0
 }
 

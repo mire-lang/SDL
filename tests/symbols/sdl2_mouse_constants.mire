@@ -1,0 +1,55 @@
+load sdl::sdl2::mouse
+load! /tests/_support/harness
+
+@[test]
+pub fn mouse_button_left_success: () :bool {
+    return use! harness::check("mouse::button_left", mouse::button_left() == 1)
+}
+
+@[test]
+pub fn mouse_button_middle_success: () :bool {
+    return use! harness::check("mouse::button_middle", mouse::button_middle() == 2)
+}
+
+@[test]
+pub fn mouse_button_right_success: () :bool {
+    return use! harness::check("mouse::button_right", mouse::button_right() == 4)
+}
+
+@[test]
+pub fn mouse_button_x1_success: () :bool {
+    return use! harness::check("mouse::button_x1", mouse::button_x1() == 8)
+}
+
+@[test]
+pub fn mouse_button_x2_success: () :bool {
+    return use! harness::check("mouse::button_x2", mouse::button_x2() == 16)
+}
+
+@[test]
+pub fn mouse_constants_limit: () :bool {
+    set ok = true :bool mut
+    if mouse::button_left() < 0 { set ok = false }
+    if mouse::button_left() != mouse::button_left() { set ok = false }
+    if mouse::button_middle() < 0 { set ok = false }
+    if mouse::button_middle() != mouse::button_middle() { set ok = false }
+    if mouse::button_right() < 0 { set ok = false }
+    if mouse::button_right() != mouse::button_right() { set ok = false }
+    if mouse::button_x1() < 0 { set ok = false }
+    if mouse::button_x1() != mouse::button_x1() { set ok = false }
+    if mouse::button_x2() < 0 { set ok = false }
+    if mouse::button_x2() != mouse::button_x2() { set ok = false }
+    return use! harness::check("mouse::constants/limit", ok)
+}
+
+@[test]
+pub fn mouse_constants_anomaly: () :bool {
+    set ok = true :bool mut
+    if mouse::button_left() != mouse::button_left() { set ok = false }
+    if mouse::button_middle() != mouse::button_middle() { set ok = false }
+    if mouse::button_right() != mouse::button_right() { set ok = false }
+    if mouse::button_x1() != mouse::button_x1() { set ok = false }
+    if mouse::button_x2() != mouse::button_x2() { set ok = false }
+    use! harness::anomaly("symbols/sdl2_mouse", "stable_repeat", "each constant evaluated twice", "identical", "compared", ok)
+    return use! harness::check("mouse::constants/anomaly", ok)
+}
